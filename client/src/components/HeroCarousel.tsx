@@ -53,6 +53,39 @@ export function HeroCarousel() {
         text: "Our Wedding Services",
         link: "#services"
       }
+    },
+    {
+      image: "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80",
+      title: "joyful",
+      subtitle: "music fest",
+      description: "EXPERIENCE THE BEST LIVE PERFORMANCES",
+      bgColor: "bg-black",
+      cta: {
+        text: "Book Festival Transport",
+        link: "#contact"
+      }
+    },
+    {
+      image: "https://images.unsplash.com/photo-1501426026826-31c667bdf23d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1436&q=80",
+      title: "Enjoy big wave",
+      subtitle: "with our jet ski",
+      description: "EXPERIENCE THE THRILL OF THE OCEAN",
+      bgColor: "bg-[#E0F7FF]",
+      cta: {
+        text: "Book Water Activities",
+        link: "#contact"
+      }
+    },
+    {
+      image: "https://images.unsplash.com/photo-1500835556837-99ac94a94552?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80",
+      title: "amazing",
+      subtitle: "travels",
+      description: "DISCOVER THE WORLD'S BEST DESTINATIONS",
+      bgColor: "bg-[#FFF8F2]",
+      cta: {
+        text: "Start Your Adventure",
+        link: "#services"
+      }
     }
   ];
 
@@ -115,7 +148,7 @@ export function HeroCarousel() {
                 <div className="max-w-xl">
                   {carouselItems[currentIndex].subtitle ? (
                     <>
-                      <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#0D2E4D] mb-3 leading-tight">
+                      <h1 className={`text-4xl md:text-5xl lg:text-6xl font-bold mb-3 leading-tight ${currentIndex === 3 ? 'text-white' : 'text-[#0D2E4D]'}`}>
                         {carouselItems[currentIndex].title}
                       </h1>
                       <div className="flex items-center gap-2 mb-3">
@@ -130,16 +163,16 @@ export function HeroCarousel() {
                       </div>
                     </>
                   ) : (
-                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#0D2E4D] mb-3 leading-tight">
+                    <h1 className={`text-4xl md:text-5xl lg:text-6xl font-bold mb-3 leading-tight ${currentIndex === 3 ? 'text-white' : 'text-[#0D2E4D]'}`}>
                       {carouselItems[currentIndex].title}
                     </h1>
                   )}
                   
-                  <h2 className="text-3xl md:text-4xl font-bold text-[#0D2E4D] mb-5">
+                  <h2 className={`text-3xl md:text-4xl font-bold mb-5 ${currentIndex === 3 ? 'text-white' : 'text-[#0D2E4D]'}`}>
                     {carouselItems[currentIndex].description}
                   </h2>
                   
-                  <p className="text-gray-600 mb-6 max-w-md">
+                  <p className={`mb-6 max-w-md ${currentIndex === 3 ? 'text-gray-300' : 'text-gray-600'}`}>
                     Unrivaled expertise for unique travel experiences. We're here to take you there dream travels.
                   </p>
                   
@@ -198,6 +231,55 @@ export function HeroCarousel() {
                       <i className="fas fa-leaf text-green-500 text-xl"></i>
                     </div>
                   </div>
+                ) : currentIndex === 3 ? (
+                  <div className="relative w-full md:h-[500px] flex items-center justify-center">
+                    <div className="w-[75%] h-auto max-h-[400px] overflow-hidden rounded-lg border-2 border-[#FF8B00]">
+                      <img 
+                        src={carouselItems[currentIndex].image}
+                        alt="Music Festival" 
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <div className="absolute top-[-10px] left-[20%] w-12 h-12 bg-[#FF8B00] rounded-full flex items-center justify-center text-white">
+                      <i className="fas fa-music text-xl"></i>
+                    </div>
+                    <div className="absolute bottom-[-20px] right-[20%] w-20 h-20 rounded-full border-2 border-[#FF8B00]"></div>
+                    <div className="absolute top-1/4 right-[10%] w-6 h-6 rounded-full bg-[#FF8B00]/60"></div>
+                  </div>
+                ) : currentIndex === 4 ? (
+                  <div className="relative w-full md:h-[500px] flex items-center justify-center">
+                    <div className="w-[70%] h-auto max-h-[400px] overflow-hidden rounded-lg shadow-xl">
+                      <img 
+                        src={carouselItems[currentIndex].image}
+                        alt="Water Activities" 
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <div className="absolute top-[30%] -left-4 w-16 h-16 flex items-center justify-center">
+                      <div className="w-10 h-10 rounded-full bg-[#0D2E4D]/20 flex items-center justify-center">
+                        <div className="w-6 h-6 rounded-full bg-[#0D2E4D]/50"></div>
+                      </div>
+                    </div>
+                    <div className="absolute bottom-[20%] right-[10%] text-[#0D2E4D]">
+                      <i className="fas fa-water text-2xl"></i>
+                    </div>
+                  </div>
+                ) : currentIndex === 5 ? (
+                  <div className="relative w-full md:h-[500px] flex items-center justify-center">
+                    <div className="w-[75%] h-auto max-h-[400px] overflow-hidden rounded-lg border-4 border-white shadow-lg">
+                      <img 
+                        src={carouselItems[currentIndex].image}
+                        alt="Amazing Travels" 
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <div className="absolute -top-4 right-[25%] w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-md">
+                      <i className="fas fa-globe-americas text-[#FF8B00] text-xl"></i>
+                    </div>
+                    <div className="absolute -bottom-4 left-[30%] w-12 h-12 bg-[#FF8B00]/20 rounded-full flex items-center justify-center">
+                      <div className="w-8 h-8 bg-[#FF8B00]/40 rounded-full"></div>
+                    </div>
+                  </div>
                 ) : (
                   <div className="relative w-full md:h-[500px] flex items-center justify-center">
                     <img 
@@ -235,14 +317,18 @@ export function HeroCarousel() {
       </div>
       
       <button 
-        className="absolute left-4 top-1/2 transform -translate-y-1/2 text-[#0D2E4D] text-3xl z-30 hover:text-[#FF8B00] transition-colors duration-300"
+        className={`absolute left-4 top-1/2 transform -translate-y-1/2 text-3xl z-30 hover:text-[#FF8B00] transition-colors duration-300 ${
+          currentIndex === 3 ? 'text-white' : 'text-[#0D2E4D]'
+        }`}
         onClick={prevSlide}
         aria-label="Previous slide"
       >
         <i className="fas fa-chevron-left"></i>
       </button>
       <button 
-        className="absolute right-4 top-1/2 transform -translate-y-1/2 text-[#0D2E4D] text-3xl z-30 hover:text-[#FF8B00] transition-colors duration-300"
+        className={`absolute right-4 top-1/2 transform -translate-y-1/2 text-3xl z-30 hover:text-[#FF8B00] transition-colors duration-300 ${
+          currentIndex === 3 ? 'text-white' : 'text-[#0D2E4D]'
+        }`}
         onClick={nextSlide}
         aria-label="Next slide"
       >
