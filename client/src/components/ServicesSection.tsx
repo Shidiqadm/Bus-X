@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
 
 const services = [
   {
@@ -25,6 +26,13 @@ const services = [
     title: "Cruise Pickup",
     description: "Reliable transportation to and from cruise terminals. Start and end your cruise vacation with our comfortable and punctual service for individuals and groups."
   }
+];
+
+const fleetImages = [
+  "https://images.unsplash.com/photo-1570125909232-eb263c188f7e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80",
+  "https://images.unsplash.com/photo-1494515843206-f3117d3f51b7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1472&q=80",
+  "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-4.0.3&auto=format&fit=crop&w=1469&q=80",
+  "https://images.unsplash.com/photo-1570125909517-49d576cc84f7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80",
 ];
 
 const container = {
@@ -58,7 +66,66 @@ export function ServicesSection() {
             We offer a comprehensive range of premium transportation services tailored to meet your specific needs.
           </p>
         </motion.div>
+
+        {/* Featured Bus Service */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.5 }}
+          className="mb-20 bg-[#FFF8F2] rounded-xl overflow-hidden"
+        >
+          <div className="flex flex-col md:flex-row">
+            <div className="md:w-1/2">
+              <img 
+                src="https://images.unsplash.com/photo-1565963925430-47909dc377e4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" 
+                alt="Luxury Bus" 
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div className="md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
+              <h3 className="text-3xl md:text-4xl font-bold mb-4">We help you to create <span className="text-[#FF8B00]">memories with us!</span></h3>
+              <p className="text-gray-600 mb-6">
+                We offer a luxury, affordable price bus for events and trips. Just take a look at our way of services.
+              </p>
+              
+              <div className="grid grid-cols-2 gap-4 mb-8">
+                {fleetImages.map((img, index) => (
+                  <div key={index} className="rounded-md overflow-hidden h-24">
+                    <img 
+                      src={img} 
+                      alt={`Bus service ${index+1}`} 
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                ))}
+              </div>
+              
+              <div className="flex items-center justify-between">
+                <Button 
+                  asChild
+                  className="bg-[#FF8B00] hover:bg-[#FF8B00]/90 text-white px-6 rounded-full font-semibold h-auto"
+                >
+                  <a href="#contact">Book Now</a>
+                </Button>
+                
+                <div className="flex items-center text-[#FF8B00]">
+                  <span className="mr-2 text-sm">explore our previous services</span>
+                  <div className="flex gap-1">
+                    <button className="w-8 h-8 border border-[#FF8B00] rounded-full flex items-center justify-center">
+                      <i className="fas fa-chevron-left text-xs"></i>
+                    </button>
+                    <button className="w-8 h-8 bg-[#FF8B00] text-white rounded-full flex items-center justify-center">
+                      <i className="fas fa-chevron-right text-xs"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </motion.div>
         
+        {/* Service Cards */}
         <motion.div
           variants={container}
           initial="hidden"

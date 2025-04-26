@@ -1,31 +1,29 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 
 const galleryImages = [
   {
     src: "https://images.unsplash.com/photo-1530521954074-e64f6810b32d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80",
-    alt: "Travel Group"
+    alt: "Travel Group",
+    featured: true
   },
   {
     src: "https://images.unsplash.com/photo-1474302770737-173ee21bab63?ixlib=rb-4.0.3&auto=format&fit=crop&w=1476&q=80",
-    alt: "Travel Memory"
+    alt: "Travel Memory",
   },
   {
     src: "https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1383&q=80",
-    alt: "Venice Travel"
+    alt: "Venice Travel",
   },
   {
     src: "https://images.unsplash.com/photo-1431794062232-2a99a5431c6c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80",
-    alt: "Mountain Vista"
+    alt: "Mountain Vista",
   },
   {
     src: "https://images.unsplash.com/photo-1465310477141-6fb93167a273?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80",
-    alt: "Group Hiking"
-  },
-  {
-    src: "https://images.unsplash.com/photo-1511632765486-a01980e01a18?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80",
-    alt: "Beach Day"
+    alt: "Group Hiking",
   }
 ];
 
@@ -40,12 +38,13 @@ const container = {
 };
 
 const item = {
-  hidden: { scale: 0.95, opacity: 0 },
-  show: { scale: 1, opacity: 1, transition: { duration: 0.5 } }
+  hidden: { y: 10, opacity: 0 },
+  show: { y: 0, opacity: 1, transition: { duration: 0.5 } }
 };
 
 export function GallerySection() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [featuredImg, ...restImages] = galleryImages;
 
   return (
     <section id="gallery" className="py-20 bg-gray-50">
@@ -57,41 +56,95 @@ export function GallerySection() {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold mb-6">Travel Memories</h2>
+          <h2 className="text-4xl font-bold mb-6">joyful <span className="text-[#FF8B00]">memories</span></h2>
           <p className="text-lg max-w-3xl mx-auto text-gray-600">
             Explore some of the beautiful moments captured during our journeys. 
             Every trip with Bus X creates lasting memories.
           </p>
         </motion.div>
         
-        <motion.div
-          variants={container}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
-        >
-          {galleryImages.map((image, index) => (
-            <motion.div
-              key={index}
-              variants={item}
-              className="rounded-lg overflow-hidden shadow-md cursor-pointer"
-              onClick={() => setSelectedImage(image.src)}
-            >
-              <div className="overflow-hidden">
-                <img 
-                  src={image.src}
-                  alt={image.alt}
-                  className="w-full h-64 object-cover transition-transform duration-500 hover:scale-105"
-                />
+        <div className="flex flex-col lg:flex-row gap-6">
+          {/* Featured Image */}
+          <motion.div 
+            className="lg:w-1/2 bg-black rounded-xl overflow-hidden h-[500px] cursor-pointer relative"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.5 }}
+            onClick={() => setSelectedImage(featuredImg.src)}
+          >
+            <img 
+              src={featuredImg.src} 
+              alt={featuredImg.alt} 
+              className="w-full h-full object-cover opacity-80 transition-transform duration-700 hover:scale-105"
+            />
+            <div className="absolute left-6 bottom-6 z-10">
+              <div className="flex flex-col items-start gap-1">
+                <div className="flex space-x-1">
+                  {[1, 2, 3, 4].map((dot) => (
+                    <div key={dot} className="w-2 h-2 rounded-full bg-[#FF8B00]"></div>
+                  ))}
+                </div>
+                <h3 className="text-3xl font-bold text-white">Stunning Adventures</h3>
               </div>
-            </motion.div>
-          ))}
-        </motion.div>
+            </div>
+          </motion.div>
+          
+          {/* Grid of regular images */}
+          <motion.div 
+            className="lg:w-1/2 grid grid-cols-2 gap-6"
+            variants={container}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: "-100px" }}
+          >
+            {restImages.map((image, index) => (
+              <motion.div
+                key={index}
+                variants={item}
+                className={`relative rounded-xl overflow-hidden ${
+                  index === 1 ? "bg-[#FF8B00]" : "bg-black"
+                } cursor-pointer h-[235px]`}
+                onClick={() => setSelectedImage(image.src)}
+              >
+                {index === 1 ? (
+                  <div className="h-full w-full"></div>
+                ) : (
+                  <img 
+                    src={image.src} 
+                    alt={image.alt} 
+                    className="w-full h-full object-cover opacity-80 transition-transform duration-700 hover:scale-105"
+                  />
+                )}
+                
+                {/* Dots for aesthetic */}
+                {index === 0 && (
+                  <div className="absolute right-4 bottom-4 flex flex-col gap-1">
+                    {[1, 2, 3, 4].map((dot) => (
+                      <div key={dot} className="w-1.5 h-1.5 rounded-full bg-[#FF8B00]"></div>
+                    ))}
+                  </div>
+                )}
+                
+                {/* Dots for the orange block */}
+                {index === 1 && (
+                  <div className="absolute left-4 top-4 flex flex-col gap-1">
+                    {[1, 2, 3, 4].map((dot) => (
+                      <div key={dot} className="w-1.5 h-1.5 rounded-full bg-white"></div>
+                    ))}
+                  </div>
+                )}
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
       </div>
 
       <Dialog open={!!selectedImage} onOpenChange={() => setSelectedImage(null)}>
         <DialogContent className="max-w-4xl p-0 overflow-hidden bg-transparent border-none">
+          <DialogTitle>
+            <VisuallyHidden>Gallery Image</VisuallyHidden>
+          </DialogTitle>
           <img 
             src={selectedImage || ''} 
             alt="Gallery Preview"
