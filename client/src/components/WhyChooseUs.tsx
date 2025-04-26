@@ -1,36 +1,47 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 
+// Updated features list as requested
 const features = [
   {
-    icon: "fas fa-couch",
-    title: "Premium Comfort",
-    description: "Our vehicles feature plush seating, ample legroom, climate control, and entertainment systems for maximum comfort."
+    icon: "fas fa-bus",
+    title: "White Clean Exterior",
+    description: "Our fleet features pristine, well-maintained exteriors that provide both a professional appearance and enhanced visibility on the road."
   },
   {
-    icon: "fas fa-wifi",
-    title: "Modern Amenities",
-    description: "Stay connected with onboard Wi-Fi, USB charging ports, refreshment services, and entertainment options."
+    icon: "fas fa-snowflake",
+    title: "Air Conditioned",
+    description: "Climate-controlled interiors ensure your comfort regardless of outside weather conditions, with adjustable settings for perfect temperature."
   },
   {
-    icon: "fas fa-user-tie",
-    title: "Professional Drivers",
-    description: "Our experienced, professional drivers prioritize your safety and provide courteous service throughout your journey."
+    icon: "fas fa-life-ring",
+    title: "Seatbelt Fitted",
+    description: "Safety is our priority with modern seatbelts installed in all seats, meeting the highest safety standards for your peace of mind."
   },
   {
-    icon: "fas fa-cogs",
-    title: "Well-Maintained Fleet",
-    description: "Regular maintenance and inspections ensure our vehicles meet the highest standards for safety and comfort."
+    icon: "fas fa-suitcase",
+    title: "Luggage Bays",
+    description: "Spacious luggage compartments provide ample storage space for all passenger belongings, keeping the cabin uncluttered and comfortable."
   },
   {
-    icon: "fas fa-sliders-h",
-    title: "Customizable Services",
-    description: "We tailor our services to your specific requirements, creating personalized travel experiences to meet your needs."
+    icon: "fas fa-window-maximize",
+    title: "Tinted Windows",
+    description: "UV-protected tinted windows enhance privacy while reducing glare and heat, creating a more pleasant travel environment."
   },
   {
-    icon: "fas fa-headset",
-    title: "24/7 Support",
-    description: "Our customer service team is available around the clock to assist with inquiries, changes, or support during your journey."
+    icon: "fas fa-music",
+    title: "CD/PA Systems",
+    description: "State-of-the-art audio systems for entertainment and clear announcements throughout your journey, enhancing the travel experience."
+  },
+  {
+    icon: "fas fa-door-open",
+    title: "Automatic Doors",
+    description: "Convenient and safe automatic door systems for smooth boarding and disembarking, operated by our professional drivers."
+  },
+  {
+    icon: "fas fa-plus-circle",
+    title: "More & More",
+    description: "Additional amenities including USB charging ports, reading lights, reclining seats, and other comforts to elevate your travel experience."
   }
 ];
 
@@ -58,7 +69,7 @@ export function WhyChooseUs() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
           <h2 className="text-4xl font-bold mb-6">Why Choose Us</h2>
           <p className="text-lg max-w-3xl mx-auto text-gray-300">
@@ -71,19 +82,19 @@ export function WhyChooseUs() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
         >
           {features.map((feature, index) => (
             <motion.div
               key={index}
               variants={item}
-              className="bg-white bg-opacity-10 rounded-xl p-6 backdrop-blur-sm border border-white border-opacity-20 hover:bg-opacity-15 transition-all duration-300"
+              className="bg-white bg-opacity-10 rounded-xl p-5 backdrop-blur-sm border border-white border-opacity-20 hover:bg-opacity-15 transition-all duration-300"
             >
-              <div className="bg-[#FF8B00] w-16 h-16 rounded-full flex items-center justify-center mb-6">
-                <i className={`${feature.icon} text-white text-2xl`}></i>
+              <div className="bg-[#FF8B00] w-14 h-14 rounded-full flex items-center justify-center mb-4">
+                <i className={`${feature.icon} text-white text-xl`}></i>
               </div>
-              <h3 className="text-xl font-semibold mb-4">{feature.title}</h3>
-              <p className="text-gray-300">{feature.description}</p>
+              <h3 className="text-lg font-semibold mb-2">{feature.title}</h3>
+              <p className="text-gray-300 text-sm">{feature.description}</p>
             </motion.div>
           ))}
         </motion.div>
@@ -93,11 +104,11 @@ export function WhyChooseUs() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="mt-12 text-center"
+          className="mt-10 text-center"
         >
           <Button 
             asChild
-            className="bg-[#FF8B00] hover:bg-[#FF8B00]/90 text-white px-8 py-6 rounded-full font-semibold text-lg h-auto"
+            className="bg-[#FF8B00] hover:bg-[#FF8B00]/90 text-white px-6 py-2 rounded-full font-semibold h-auto"
           >
             <a href="#contact">Contact Us Today</a>
           </Button>
