@@ -126,7 +126,7 @@ export function HeroCarousel() {
   };
 
   return (
-    <section id="home" className="min-h-screen relative overflow-hidden pt-20">
+    <section id="home" className="h-screen relative overflow-hidden pt-20">
       <AnimatePresence mode="wait">
         <motion.div
           key={currentIndex}
@@ -134,9 +134,9 @@ export function HeroCarousel() {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5 }}
-          className={`${carouselItems[currentIndex].bgColor} h-full w-full py-16`}
+          className={`${carouselItems[currentIndex].bgColor} h-full w-full flex items-center`}
         >
-          <div className="container h-full mx-auto px-4 md:px-8 relative">
+          <div className="container mx-auto px-4 md:px-8 py-10 md:py-20 relative">
             <div className="flex flex-col md:flex-row h-full items-center justify-between">
               {/* Content side */}
               <motion.div 
@@ -195,7 +195,7 @@ export function HeroCarousel() {
                 transition={{ duration: 0.7, delay: 0.2 }}
               >
                 {currentIndex === 1 ? (
-                  <div className="relative w-full h-full flex items-center justify-center">
+                  <div className="relative w-full h-[300px] md:h-[400px] flex items-center justify-center">
                     <div className="absolute w-72 h-72 md:w-96 md:h-96 rounded-full border-2 border-[#0D2E4D]"></div>
                     <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-2 border-[#0D2E4D]">
                       <img 
@@ -215,8 +215,8 @@ export function HeroCarousel() {
                     </div>
                   </div>
                 ) : currentIndex === 2 ? (
-                  <div className="relative w-full md:h-[500px] flex items-center justify-center">
-                    <div className="rounded-t-full w-64 h-72 md:w-80 md:h-96 overflow-hidden border-2 border-[#0D2E4D]">
+                  <div className="relative w-full h-[300px] md:h-[400px] flex items-center justify-center">
+                    <div className="rounded-t-full w-64 h-64 md:w-80 md:h-80 overflow-hidden border-2 border-[#0D2E4D]">
                       <img 
                         src={carouselItems[currentIndex].image}
                         alt="Wedding Transportation" 
@@ -232,8 +232,8 @@ export function HeroCarousel() {
                     </div>
                   </div>
                 ) : currentIndex === 3 ? (
-                  <div className="relative w-full md:h-[500px] flex items-center justify-center">
-                    <div className="w-[75%] h-auto max-h-[400px] overflow-hidden rounded-lg border-2 border-[#FF8B00]">
+                  <div className="relative w-full h-[300px] md:h-[400px] flex items-center justify-center">
+                    <div className="w-[75%] h-[250px] md:h-[350px] overflow-hidden rounded-lg border-2 border-[#FF8B00]">
                       <img 
                         src={carouselItems[currentIndex].image}
                         alt="Music Festival" 
@@ -247,8 +247,8 @@ export function HeroCarousel() {
                     <div className="absolute top-1/4 right-[10%] w-6 h-6 rounded-full bg-[#FF8B00]/60"></div>
                   </div>
                 ) : currentIndex === 4 ? (
-                  <div className="relative w-full md:h-[500px] flex items-center justify-center">
-                    <div className="w-[70%] h-auto max-h-[400px] overflow-hidden rounded-lg shadow-xl">
+                  <div className="relative w-full h-[300px] md:h-[400px] flex items-center justify-center">
+                    <div className="w-[70%] h-[250px] md:h-[350px] overflow-hidden rounded-lg shadow-xl">
                       <img 
                         src={carouselItems[currentIndex].image}
                         alt="Water Activities" 
@@ -265,8 +265,8 @@ export function HeroCarousel() {
                     </div>
                   </div>
                 ) : currentIndex === 5 ? (
-                  <div className="relative w-full md:h-[500px] flex items-center justify-center">
-                    <div className="w-[75%] h-auto max-h-[400px] overflow-hidden rounded-lg border-4 border-white shadow-lg">
+                  <div className="relative w-full h-[300px] md:h-[400px] flex items-center justify-center">
+                    <div className="w-[75%] h-[250px] md:h-[350px] overflow-hidden rounded-lg border-4 border-white shadow-lg">
                       <img 
                         src={carouselItems[currentIndex].image}
                         alt="Amazing Travels" 
@@ -281,12 +281,14 @@ export function HeroCarousel() {
                     </div>
                   </div>
                 ) : (
-                  <div className="relative w-full md:h-[500px] flex items-center justify-center">
-                    <img 
-                      src={carouselItems[currentIndex].image}
-                      alt="Joyful Trip" 
-                      className="w-3/4 h-auto max-h-[400px] object-cover rounded-lg"
-                    />
+                  <div className="relative w-full h-[300px] md:h-[400px] flex items-center justify-center">
+                    <div className="w-[75%] h-[250px] md:h-[350px] overflow-hidden rounded-lg">
+                      <img 
+                        src={carouselItems[currentIndex].image}
+                        alt="Joyful Trip" 
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
                     <div className="absolute -bottom-4 -right-4 w-20 h-20 rounded-full bg-[#FF8B00]/20 flex items-center justify-center">
                       <div className="w-12 h-12 rounded-full bg-[#FF8B00]/40"></div>
                     </div>
