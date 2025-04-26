@@ -13,7 +13,7 @@ export function AboutSection() {
             className="relative"
           >
             <img 
-              src="https://images.unsplash.com/photo-1464219789935-c2d9d9eb4930?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" 
+              src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-4.0.3&auto=format&fit=crop&w=1469&q=80" 
               alt="About Bus X" 
               className="rounded-lg shadow-lg w-full h-auto"
             />

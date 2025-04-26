@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 
+// More scalable gallery design with ability to add more images in the future
 const galleryImages = [
   {
     src: "https://images.unsplash.com/photo-1530521954074-e64f6810b32d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80",
@@ -22,8 +23,16 @@ const galleryImages = [
     alt: "Mountain Vista",
   },
   {
+    src: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80",
+    alt: "Beach Travel",
+  },
+  {
     src: "https://images.unsplash.com/photo-1465310477141-6fb93167a273?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80",
     alt: "Group Hiking",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1516546453174-5e1098a4b4af?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80",
+    alt: "Bus Travel",
   }
 ];
 
@@ -44,7 +53,10 @@ const item = {
 
 export function GallerySection() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
-  const [featuredImg, ...restImages] = galleryImages;
+  
+  // Separate featured image from the rest
+  const featuredImg = galleryImages.find(img => img.featured) || galleryImages[0];
+  const regularImages = galleryImages.filter(img => img !== featuredImg);
 
   return (
     <section id="gallery" className="py-20 bg-gray-50">
@@ -90,7 +102,7 @@ export function GallerySection() {
             </div>
           </motion.div>
           
-          {/* Grid of regular images */}
+          {/* Grid of regular images - Now more scalable */}
           <motion.div 
             className="lg:w-1/2 grid grid-cols-2 gap-6"
             variants={container}
@@ -98,7 +110,7 @@ export function GallerySection() {
             whileInView="show"
             viewport={{ once: true, margin: "-100px" }}
           >
-            {restImages.map((image, index) => (
+            {regularImages.slice(0, 4).map((image, index) => (
               <motion.div
                 key={index}
                 variants={item}
@@ -108,7 +120,9 @@ export function GallerySection() {
                 onClick={() => setSelectedImage(image.src)}
               >
                 {index === 1 ? (
-                  <div className="h-full w-full"></div>
+                  <div className="h-full w-full flex items-center justify-center">
+                    <h3 className="text-2xl font-bold text-white text-center px-4">Create Memorable Journeys</h3>
+                  </div>
                 ) : (
                   <img 
                     src={image.src} 
@@ -138,6 +152,32 @@ export function GallerySection() {
             ))}
           </motion.div>
         </div>
+
+        {/* Additional scalable grid for more images */}
+        {regularImages.length > 4 && (
+          <motion.div
+            variants={container}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: "-100px" }}
+            className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 mt-6"
+          >
+            {regularImages.slice(4).map((image, index) => (
+              <motion.div
+                key={index + 4}
+                variants={item}
+                className="rounded-xl overflow-hidden bg-black cursor-pointer h-52"
+                onClick={() => setSelectedImage(image.src)}
+              >
+                <img 
+                  src={image.src} 
+                  alt={image.alt} 
+                  className="w-full h-full object-cover opacity-80 transition-transform duration-700 hover:scale-105"
+                />
+              </motion.div>
+            ))}
+          </motion.div>
+        )}
       </div>
 
       <Dialog open={!!selectedImage} onOpenChange={() => setSelectedImage(null)}>
