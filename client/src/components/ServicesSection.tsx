@@ -215,27 +215,30 @@ export function ServicesSection() {
           transition={{ duration: 0.5 }}
           className="mb-20 bg-[#FFF8F2] rounded-xl overflow-hidden"
         >
-          <div className="flex flex-col md:flex-row">
-            <div className="md:w-1/2">
+          <div className="flex flex-col md:flex-row group">
+            <div className="md:w-1/2 overflow-hidden">
               <img 
                 src="https://images.unsplash.com/photo-1565963925430-47909dc377e4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" 
                 alt="Luxury Bus" 
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
               />
             </div>
-            <div className="md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
-              <h3 className="text-3xl md:text-4xl font-bold mb-4">We help you to create <span className="text-[#FF8B00]">memories with us!</span></h3>
-              <p className="text-gray-600 mb-6">
+            <div className="md:w-1/2 p-8 md:p-12 flex flex-col justify-center transition-all duration-300 group-hover:bg-[#FFF8F2]/70">
+              <h3 className="text-3xl md:text-4xl font-bold mb-4 transition-all duration-300 relative inline-block">
+                We help you to create <span className="text-[#FF8B00] transition-all duration-300 group-hover:text-[#FF7A00]">memories with us!</span>
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#FF8B00] transition-all duration-700 group-hover:w-1/3"></span>
+              </h3>
+              <p className="text-gray-600 mb-6 transition-all duration-300 group-hover:text-gray-700">
                 We offer a luxury, affordable price bus for events and trips. Just take a look at our way of services.
               </p>
               
               <div className="grid grid-cols-2 gap-4 mb-8">
                 {currentFleetImages.map((img, index) => (
-                  <div key={index} className="rounded-md overflow-hidden h-24">
+                  <div key={index} className="rounded-md overflow-hidden h-24 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1">
                     <img 
                       src={img} 
                       alt={`Bus service ${index+1}`} 
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
                     />
                   </div>
                 ))}
@@ -244,7 +247,7 @@ export function ServicesSection() {
               <div className="flex items-center justify-between">
                 <Button 
                   asChild
-                  className="bg-[#FF8B00] hover:bg-[#FF8B00]/90 text-white px-6 rounded-full font-semibold h-auto"
+                  className="bg-[#FF8B00] hover:bg-[#FF8B00]/90 text-white px-6 rounded-full font-semibold h-auto transition-transform duration-300 hover:scale-105 active:scale-95"
                 >
                   <a href="#contact">Book Now</a>
                 </Button>
@@ -253,16 +256,16 @@ export function ServicesSection() {
                   <span className="mr-2 text-sm">explore our previous services</span>
                   <div className="flex gap-1">
                     <button 
-                      className="w-8 h-8 border border-[#FF8B00] rounded-full flex items-center justify-center"
+                      className="w-8 h-8 border border-[#FF8B00] rounded-full flex items-center justify-center transition-all duration-300 hover:bg-[#FF8B00]/10"
                       onClick={prevFleetSet}
                     >
-                      <i className="fas fa-chevron-left text-xs"></i>
+                      <i className="fas fa-chevron-left text-xs transition-transform duration-300 hover:-translate-x-0.5"></i>
                     </button>
                     <button 
-                      className="w-8 h-8 bg-[#FF8B00] text-white rounded-full flex items-center justify-center"
+                      className="w-8 h-8 bg-[#FF8B00] text-white rounded-full flex items-center justify-center transition-all duration-300 hover:bg-[#FF8B00]/90"
                       onClick={nextFleetSet}
                     >
-                      <i className="fas fa-chevron-right text-xs"></i>
+                      <i className="fas fa-chevron-right text-xs transition-transform duration-300 hover:translate-x-0.5"></i>
                     </button>
                   </div>
                 </div>
@@ -283,29 +286,38 @@ export function ServicesSection() {
             <motion.div
               key={index}
               variants={item}
-              className="bg-white rounded-xl shadow-md overflow-hidden flex flex-col md:flex-row"
+              className="bg-white rounded-xl shadow-md overflow-hidden flex flex-col md:flex-row group hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+              whileHover={{ 
+                boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
+              }}
             >
               <div className="md:w-2/5 h-56 md:h-auto overflow-hidden">
                 <img 
                   src={service.image} 
                   alt={service.title} 
-                  className="w-full h-full object-cover transition-transform duration-700 hover:scale-105" 
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
                 />
               </div>
-              <div className="md:w-3/5 p-6">
+              <div className="md:w-3/5 p-6 transition-all duration-300 group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-[#FFF8F2]">
                 <div className="flex items-center mb-4">
-                  <div className="bg-[#FF8B00]/10 w-12 h-12 rounded-full flex items-center justify-center mr-4">
-                    <i className={`${service.icon} text-[#FF8B00] text-xl`}></i>
+                  <div className="bg-[#FF8B00]/10 w-12 h-12 rounded-full flex items-center justify-center mr-4 transition-all duration-300 group-hover:bg-[#FF8B00]/20 group-hover:scale-110">
+                    <i className={`${service.icon} text-[#FF8B00] text-xl transition-all duration-300 group-hover:rotate-12`}></i>
                   </div>
-                  <h3 className="text-2xl font-semibold">{service.title}</h3>
+                  <h3 className="text-2xl font-semibold transition-all duration-300 group-hover:text-[#0D2E4D] relative">
+                    {service.title}
+                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#FF8B00] transition-all duration-500 group-hover:w-full"></span>
+                  </h3>
                 </div>
-                <p className="text-gray-600 mb-4">{service.description}</p>
+                <p className="text-gray-600 mb-4 transition-all duration-300 group-hover:text-gray-700">{service.description}</p>
                 <a 
                   href="#contact" 
-                  className="text-[#FF8B00] font-semibold flex items-center group"
+                  className="text-[#FF8B00] font-semibold flex items-center group/link"
                 >
-                  Book Now{" "}
-                  <i className="fas fa-arrow-right ml-2 transition-transform duration-300 group-hover:translate-x-1"></i>
+                  <span className="relative overflow-hidden">
+                    Book Now
+                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#FF8B00] transition-all duration-300 group-hover/link:w-full"></span>
+                  </span>
+                  <i className="fas fa-arrow-right ml-2 transition-all duration-300 group-hover/link:translate-x-1"></i>
                 </a>
               </div>
             </motion.div>
@@ -313,13 +325,19 @@ export function ServicesSection() {
         </motion.div>
 
         {/* Pagination controls */}
-        <div className="mt-10 flex justify-center">
-          <div className="flex items-center gap-3">
+        <motion.div 
+          className="mt-10 flex justify-center"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
+          <div className="flex items-center gap-3 bg-white py-3 px-6 rounded-full shadow-sm hover:shadow-md transition-all duration-300">
             <button 
               onClick={prevServicePage}
-              className="w-10 h-10 border border-[#FF8B00] rounded-full flex items-center justify-center text-[#FF8B00] hover:bg-[#FF8B00] hover:text-white transition-colors"
+              className="w-10 h-10 border border-[#FF8B00] rounded-full flex items-center justify-center text-[#FF8B00] hover:bg-[#FF8B00] hover:text-white transition-all duration-300 hover:scale-105 active:scale-95"
             >
-              <i className="fas fa-chevron-left"></i>
+              <i className="fas fa-chevron-left transition-transform duration-300 group-hover:-translate-x-0.5"></i>
             </button>
             
             <div className="flex items-center gap-2">
@@ -327,10 +345,10 @@ export function ServicesSection() {
                 <button
                   key={idx}
                   onClick={() => setCurrentPage(idx)}
-                  className={`w-3 h-3 rounded-full transition-all ${
+                  className={`h-3 rounded-full transition-all duration-300 ${
                     currentPage === idx 
                       ? "bg-[#FF8B00] w-6" 
-                      : "bg-gray-300 hover:bg-gray-400"
+                      : "bg-gray-300 hover:bg-gray-400 w-3 hover:w-4"
                   }`}
                   aria-label={`Go to page ${idx + 1}`}
                 ></button>
@@ -339,12 +357,12 @@ export function ServicesSection() {
             
             <button 
               onClick={nextServicePage}
-              className="w-10 h-10 border border-[#FF8B00] rounded-full flex items-center justify-center text-[#FF8B00] hover:bg-[#FF8B00] hover:text-white transition-colors"
+              className="w-10 h-10 border border-[#FF8B00] rounded-full flex items-center justify-center text-[#FF8B00] hover:bg-[#FF8B00] hover:text-white transition-all duration-300 hover:scale-105 active:scale-95"
             >
-              <i className="fas fa-chevron-right"></i>
+              <i className="fas fa-chevron-right transition-transform duration-300 group-hover:translate-x-0.5"></i>
             </button>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
