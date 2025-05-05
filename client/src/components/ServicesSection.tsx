@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import xlogo from "@/assets/xlogo.svg";
 
 // Full list of services as requested
 const services = [
@@ -173,7 +174,7 @@ export function ServicesSection() {
   return (
     <section id="services" className="py-20">
       <div className="container mx-auto px-4">
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
@@ -184,23 +185,23 @@ export function ServicesSection() {
           <p className="text-lg max-w-3xl mx-auto text-gray-600">
             We offer a comprehensive range of premium transportation services tailored to meet your specific needs.
           </p>
-        </motion.div>
+        </motion.div> */}
 
         {/* Scrolling Text Banner */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="relative mb-16 overflow-hidden bg-[#0D2E4D] text-white py-6"
+          className="relative mb-16 overflow-hidden text-transparent py-6 [-webkit-text-stroke:0.5px_#000]"
         >
           <div className="flex items-center gap-6 whitespace-nowrap animate-marquee">
             {[...Array(3)].map((_, idx) => (
-              <div key={idx} className="flex items-center gap-6 text-xl font-bold">
+              <div key={idx} className="flex items-center gap-6 text-5xl font-bold">
                 <span>Travel anywhere and anytime with Bus</span>
-                <span className="text-[#FF8B00]">X</span>
+                <img src={xlogo} alt="X Logo" className="w-8 h-8" />
                 <span className="mx-4">•</span>
                 <span>Travel anywhere and anytime with Bus</span>
-                <span className="text-[#FF8B00]">X</span>
+                <img src={xlogo} alt="X Logo" className="w-8 h-8" />
                 <span className="mx-4">•</span>
               </div>
             ))}
@@ -208,7 +209,7 @@ export function ServicesSection() {
         </motion.div>
 
         {/* Featured Bus Service */}
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
@@ -272,10 +273,10 @@ export function ServicesSection() {
               </div>
             </div>
           </div>
-        </motion.div>
+        </motion.div> */}
         
         {/* Service Cards */}
-        <motion.div
+        {/* <motion.div
           variants={container}
           initial="hidden"
           whileInView="show"
@@ -322,10 +323,10 @@ export function ServicesSection() {
               </div>
             </motion.div>
           ))}
-        </motion.div>
+        </motion.div> */}
 
         {/* Pagination controls */}
-        <motion.div 
+        {/* <motion.div 
           className="mt-10 flex justify-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -362,7 +363,7 @@ export function ServicesSection() {
               <i className="fas fa-chevron-right transition-transform duration-300 group-hover:translate-x-0.5"></i>
             </button>
           </div>
-        </motion.div>
+        </motion.div> */}
       </div>
     </section>
   );

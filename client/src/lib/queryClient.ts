@@ -1,5 +1,11 @@
 import { QueryClient, QueryFunction } from "@tanstack/react-query";
 
+// Mock success response for form submissions
+const mockSuccessResponse = new Response(JSON.stringify({ success: true }), {
+  status: 200,
+  headers: { 'Content-Type': 'application/json' }
+});
+
 async function throwIfResNotOk(res: Response) {
   if (!res.ok) {
     const text = (await res.text()) || res.statusText;
@@ -12,15 +18,11 @@ export async function apiRequest(
   url: string,
   data?: unknown | undefined,
 ): Promise<Response> {
-  const res = await fetch(url, {
-    method,
-    headers: data ? { "Content-Type": "application/json" } : {},
-    body: data ? JSON.stringify(data) : undefined,
-    credentials: "include",
-  });
-
-  await throwIfResNotOk(res);
-  return res;
+  console.log(`Client-only mode: ${method} request to ${url}`, data);
+  
+  // In client-only mode, we'll simulate a successful response
+  // This way forms will appear to work without a backend
+  return mockSuccessResponse;
 }
 
 type UnauthorizedBehavior = "returnNull" | "throw";
@@ -29,16 +31,10 @@ export const getQueryFn: <T>(options: {
 }) => QueryFunction<T> =
   ({ on401: unauthorizedBehavior }) =>
   async ({ queryKey }) => {
-    const res = await fetch(queryKey[0] as string, {
-      credentials: "include",
-    });
-
-    if (unauthorizedBehavior === "returnNull" && res.status === 401) {
-      return null;
-    }
-
-    await throwIfResNotOk(res);
-    return await res.json();
+    console.log(`Client-only mode: GET request to ${queryKey[0]}`);
+    
+    // For GET requests, return empty mock data
+    return {} as T;
   };
 
 export const queryClient = new QueryClient({

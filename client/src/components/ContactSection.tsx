@@ -17,6 +17,12 @@ const formSchema = z.object({
   phone: z.string().min(10, { message: "Please enter a valid phone number" }),
   service: z.string().min(1, { message: "Please select a service" }),
   message: z.string().min(10, { message: "Message must be at least 10 characters" }),
+  tripType: z.enum(['single', 'round']),
+  startFrom: z.string().min(2, { message: "Please enter a valid start location" }),
+  endTo: z.string().min(2, { message: "Please enter a valid end location" }),
+  date: z.string().min(1, { message: "Please select a date" }),
+  time: z.string().min(1, { message: "Please select a time" }),
+  company: z.string().min(2, { message: "Please enter a valid company name" }),
 });
 
 type FormValues = z.infer<typeof formSchema>;
@@ -32,11 +38,19 @@ export function ContactSection() {
       phone: "",
       service: "",
       message: "",
+      tripType: 'single',
+      startFrom: "",
+      endTo: "",
+      date: "",
+      time: "",
+      company: "",
     },
   });
 
   const mutation = useMutation({
     mutationFn: (values: FormValues) => {
+      // In client-only mode, we'll just simulate the API call
+      console.log("Form submitted with values:", values);
       return apiRequest("POST", "/api/contact", values);
     },
     onSuccess: () => {
@@ -84,10 +98,108 @@ export function ContactSection() {
             transition={{ duration: 0.5 }}
             className="bg-white rounded-xl shadow-md p-8"
           >
-            <h3 className="text-2xl font-semibold mb-6">Send Us a Message</h3>
+            <h3 className="text-2xl font-semibold mb-6">Book Your Trip</h3>
             
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                {/* Trip Type Segment Control */}
+                <div className="border border-gray-300 rounded-full p-1 mb-4">
+                  <div className="grid grid-cols-2 h-10">
+                    <button
+                      type="button"
+                      className={`rounded-full flex items-center justify-center text-sm font-medium ${form.watch('tripType') === 'single' ? 'bg-[#FF8B00] text-white' : 'text-gray-700'}`}
+                      onClick={() => form.setValue('tripType', 'single')}
+                    >
+                      Single Trip
+                    </button>
+                    <button
+                      type="button"
+                      className={`rounded-full flex items-center justify-center text-sm font-medium ${form.watch('tripType') === 'round' ? 'bg-[#FF8B00] text-white' : 'text-gray-700'}`}
+                      onClick={() => form.setValue('tripType', 'round')}
+                    >
+                      Round Trip
+                    </button>
+                  </div>
+                </div>
+                
+                {/* Start Location */}
+                <FormField
+                  control={form.control}
+                  name="startFrom"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-gray-700">Start From</FormLabel>
+                      <FormControl>
+                        <Input 
+                          {...field} 
+                          placeholder="Departure location"
+                          className="px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#FF8B00]" 
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                
+                {/* End Location */}
+                <FormField
+                  control={form.control}
+                  name="endTo"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-gray-700">End To</FormLabel>
+                      <FormControl>
+                        <Input 
+                          {...field} 
+                          placeholder="Destination location"
+                          className="px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#FF8B00]" 
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                
+                {/* Date and Time */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <FormField
+                    control={form.control}
+                    name="date"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="text-gray-700">Date</FormLabel>
+                        <FormControl>
+                          <Input 
+                            {...field} 
+                            type="date"
+                            className="px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#FF8B00]" 
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  
+                  <FormField
+                    control={form.control}
+                    name="time"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="text-gray-700">Time</FormLabel>
+                        <FormControl>
+                          <Input 
+                            {...field} 
+                            type="time" 
+                            className="px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#FF8B00]" 
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </div>
+                
+                {/* Name and Email */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <FormField
                     control={form.control}
@@ -125,48 +237,43 @@ export function ContactSection() {
                   />
                 </div>
                 
-                <FormField
-                  control={form.control}
-                  name="phone"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="text-gray-700">Phone Number</FormLabel>
-                      <FormControl>
-                        <Input 
-                          {...field} 
-                          type="tel" 
-                          className="px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#FF8B00]" 
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                
-                <FormField
-                  control={form.control}
-                  name="service"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="text-gray-700">Service Interested In</FormLabel>
-                      <Select onValueChange={field.onChange} defaultValue={field.value}>
+                {/* Phone and Company */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <FormField
+                    control={form.control}
+                    name="phone"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="text-gray-700">Phone Number</FormLabel>
                         <FormControl>
-                          <SelectTrigger className="px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#FF8B00]">
-                            <SelectValue placeholder="Select a Service" />
-                          </SelectTrigger>
+                          <Input 
+                            {...field} 
+                            type="tel" 
+                            className="px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#FF8B00]" 
+                          />
                         </FormControl>
-                        <SelectContent>
-                          <SelectItem value="airport">Airport Transfer</SelectItem>
-                          <SelectItem value="occasions">Special Occasions</SelectItem>
-                          <SelectItem value="tours">Tours & Trips</SelectItem>
-                          <SelectItem value="cruise">Cruise Pickup</SelectItem>
-                          <SelectItem value="other">Other</SelectItem>
-                        </SelectContent>
-                      </Select>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  
+                  <FormField
+                    control={form.control}
+                    name="company"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="text-gray-700">Company Name</FormLabel>
+                        <FormControl>
+                          <Input 
+                            {...field}
+                            className="px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#FF8B00]" 
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </div>
                 
                 <FormField
                   control={form.control}
@@ -191,7 +298,7 @@ export function ContactSection() {
                   className="bg-[#FF8B00] hover:bg-[#FF8B00]/90 text-white px-6 py-3 rounded-full font-semibold w-full h-auto"
                   disabled={mutation.isPending}
                 >
-                  {mutation.isPending ? "Sending..." : "Send Message"}
+                  {mutation.isPending ? "Sending..." : "Book Now"}
                 </Button>
               </form>
             </Form>
@@ -206,7 +313,7 @@ export function ContactSection() {
             <div className="bg-[#0D2E4D] text-white rounded-xl p-8 mb-8">
               <h3 className="text-2xl font-semibold mb-6">Get in Touch</h3>
               
-              <div className="flex items-start mb-6">
+              {/* <div className="flex items-start mb-6">
                 <div className="bg-[#FF8B00]/20 w-12 h-12 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
                   <i className="fas fa-map-marker-alt text-[#FF8B00]"></i>
                 </div>
@@ -214,7 +321,7 @@ export function ContactSection() {
                   <h4 className="font-semibold mb-1">Our Location</h4>
                   <p className="text-gray-300">123 Travel Avenue, Suite 500<br/>New York, NY 10001</p>
                 </div>
-              </div>
+              </div> */}
               
               <div className="flex items-start mb-6">
                 <div className="bg-[#FF8B00]/20 w-12 h-12 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
@@ -222,8 +329,7 @@ export function ContactSection() {
                 </div>
                 <div>
                   <h4 className="font-semibold mb-1">Phone Number</h4>
-                  <p className="text-gray-300">+1 (800) 123-4567</p>
-                  <p className="text-gray-300">+1 (212) 555-7890</p>
+                  <p className="text-gray-300">0424242444</p>
                 </div>
               </div>
               
@@ -234,7 +340,6 @@ export function ContactSection() {
                 <div>
                   <h4 className="font-semibold mb-1">Email Address</h4>
                   <p className="text-gray-300">info@busx.com</p>
-                  <p className="text-gray-300">bookings@busx.com</p>
                 </div>
               </div>
             </div>

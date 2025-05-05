@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
+import logo from "../assets/logo.png";
 
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -35,7 +36,7 @@ export function Navbar() {
       <div className="container mx-auto px-4 py-3">
         <div className="flex justify-between items-center">
           <Link href="/" className="flex items-center">
-            <span className="text-[#FF8B00] text-3xl font-bold">Bus<span className="text-[#0D2E4D]">X</span></span>
+            <img src={logo} alt="Bus X Logo" className="w-full h-10" />
           </Link>
           
           {/* Desktop Navigation */}
@@ -44,12 +45,12 @@ export function Navbar() {
             <a href="#about" className="font-medium hover:text-[#FF8B00] transition duration-300">About</a>
             <a href="#services" className="font-medium hover:text-[#FF8B00] transition duration-300">Services</a>
             <a href="#gallery" className="font-medium hover:text-[#FF8B00] transition duration-300">Gallery</a>
-            <a href="#contact" className="font-medium hover:text-[#FF8B00] transition duration-300">Contact</a>
+
             <Button 
               asChild 
               className="bg-[#FF8B00] hover:bg-[#FF8B00]/90 text-white rounded-full font-semibold"
             >
-              <a href="#contact">Book Now</a>
+              <a href="#contact" className="font-medium hover:text-[#FF8B00] transition duration-300">Contact Us</a>
             </Button>
           </nav>
           

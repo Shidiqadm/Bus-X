@@ -1,6 +1,9 @@
 import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
+import joyfulTrip from "../assets/Hero image.png";
+import van from "../assets/van.png";
+import music from "../assets/musicfest.png";
 
 type CarouselItem = {
   image: string;
@@ -22,71 +25,75 @@ export function HeroCarousel() {
 
   const carouselItems: CarouselItem[] = [
     {
-      image: "https://images.unsplash.com/photo-1504609773096-104ff2c73ba4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80",
+      image: joyfulTrip,
       title: "Your joyful",
       subtitle: "trip",
-      icon: "🚌",
+      icon: van,
       description: "is waiting",
       bgColor: "bg-[#FFF8F2]",
       cta: {
         text: "Book Your Journey",
-        link: "#contact"
-      }
+        link: "#contact",
+      },
     },
     {
-      image: "https://images.unsplash.com/photo-1501555088652-021faa106b9b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1473&q=80",
+      image:
+        "https://images.unsplash.com/photo-1501555088652-021faa106b9b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1473&q=80",
       title: "TRAVEL",
       subtitle: "with us",
       description: "WITH LOW PRICE YOU CAN GO ANYWHERE",
       bgColor: "bg-white",
       cta: {
         text: "Explore Services",
-        link: "#services"
-      }
+        link: "#services",
+      },
     },
     {
-      image: "https://images.unsplash.com/photo-1527786356703-4b100091cd2c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1374&q=80",
+      image:
+        "https://images.unsplash.com/photo-1527786356703-4b100091cd2c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1374&q=80",
       title: "We offer",
       description: "transportation for wedding events",
       bgColor: "bg-[#FFF8F2]",
       cta: {
         text: "Our Wedding Services",
-        link: "#services"
-      }
+        link: "#services",
+      },
     },
     {
-      image: "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80",
+      image: music,
       title: "joyful",
       subtitle: "music fest",
       description: "EXPERIENCE THE BEST LIVE PERFORMANCES",
       bgColor: "bg-black",
       cta: {
         text: "Book Festival Transport",
-        link: "#contact"
-      }
+        link: "#contact",
+      },
     },
     {
-      image: "https://images.unsplash.com/photo-1501426026826-31c667bdf23d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1436&q=80",
+      image:
+        "https://images.unsplash.com/photo-1564633351631-e85bd59a91af?q=80&w=3496&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       title: "Enjoy big wave",
       subtitle: "with our jet ski",
       description: "EXPERIENCE THE THRILL OF THE OCEAN",
       bgColor: "bg-[#E0F7FF]",
       cta: {
         text: "Book Water Activities",
-        link: "#contact"
-      }
+        link: "#contact",
+      },
     },
     {
-      image: "https://images.unsplash.com/photo-1500835556837-99ac94a94552?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80",
+      image:
+        "https://images.unsplash.com/photo-1500835556837-99ac94a94552?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80",
       title: "amazing",
       subtitle: "travels",
       description: "DISCOVER THE WORLD'S BEST DESTINATIONS",
       bgColor: "bg-[#FFF8F2]",
       cta: {
         text: "Start Your Adventure",
-        link: "#services"
-      }
-    }
+        link: "#services",
+      },
+    },
   ];
 
   useEffect(() => {
@@ -102,7 +109,7 @@ export function HeroCarousel() {
     if (intervalRef.current) {
       clearInterval(intervalRef.current);
     }
-    
+
     intervalRef.current = window.setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % carouselItems.length);
     }, 6000);
@@ -114,7 +121,8 @@ export function HeroCarousel() {
   };
 
   const prevSlide = () => {
-    const newIndex = currentIndex === 0 ? carouselItems.length - 1 : currentIndex - 1;
+    const newIndex =
+      currentIndex === 0 ? carouselItems.length - 1 : currentIndex - 1;
     setCurrentIndex(newIndex);
     startCarouselInterval();
   };
@@ -139,7 +147,7 @@ export function HeroCarousel() {
           <div className="container mx-auto px-4 md:px-8 py-10 md:py-20 relative">
             <div className="flex flex-col md:flex-row h-full items-center justify-between">
               {/* Content side */}
-              <motion.div 
+              <motion.div
                 className="w-full md:w-1/2 text-left md:pr-8 z-10 mb-10 md:mb-0"
                 initial={{ opacity: 0, x: -30 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -148,35 +156,54 @@ export function HeroCarousel() {
                 <div className="max-w-xl">
                   {carouselItems[currentIndex].subtitle ? (
                     <>
-                      <h1 className={`text-4xl md:text-5xl lg:text-6xl font-bold mb-3 leading-tight ${currentIndex === 3 ? 'text-white' : 'text-[#0D2E4D]'}`}>
+                      <h1
+                        className={`text-4xl md:text-5xl lg:text-6xl font-bold mb-3 leading-tight ${
+                          currentIndex === 3 ? "text-white" : "text-[#0D2E4D]"
+                        }`}
+                      >
                         {carouselItems[currentIndex].title}
                       </h1>
                       <div className="flex items-center gap-2 mb-3">
-                        <span className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#FF8B00] italic">
+                        <span className="text-6 md:text-6xl lg:text-8xl font-normal text-[#FF8B00] italic" style={{ fontFamily: "'Red Bright Demo', italic" }}>
                           {carouselItems[currentIndex].subtitle}
                         </span>
                         {carouselItems[currentIndex].icon && (
-                          <span className="text-3xl">
-                            {carouselItems[currentIndex].icon}
-                          </span>
+                          <img
+                            src={carouselItems[currentIndex].icon}
+                            alt="Van"
+                            className="w-40 h-30"
+                          />
                         )}
                       </div>
                     </>
                   ) : (
-                    <h1 className={`text-4xl md:text-5xl lg:text-6xl font-bold mb-3 leading-tight ${currentIndex === 3 ? 'text-white' : 'text-[#0D2E4D]'}`}>
+                    <h1
+                      className={`text-4xl md:text-5xl lg:text-6xl font-bold mb-3 leading-tight ${
+                        currentIndex === 3 ? "text-white" : "text-[#0D2E4D]"
+                      }`}
+                    >
                       {carouselItems[currentIndex].title}
                     </h1>
                   )}
-                  
-                  <h2 className={`text-3xl md:text-4xl font-bold mb-5 ${currentIndex === 3 ? 'text-white' : 'text-[#0D2E4D]'}`}>
+
+                  <h2
+                    className={`text-3xl md:text-4xl font-bold mb-5 ${
+                      currentIndex === 3 ? "text-white" : "text-[#0D2E4D]"
+                    }`}
+                  >
                     {carouselItems[currentIndex].description}
                   </h2>
-                  
-                  <p className={`mb-6 max-w-md ${currentIndex === 3 ? 'text-gray-300' : 'text-gray-600'}`}>
-                    Unrivaled expertise for unique travel experiences. We're here to take you there dream travels.
+
+                  <p
+                    className={`mb-6 max-w-md ${
+                      currentIndex === 3 ? "text-gray-300" : "text-gray-600"
+                    }`}
+                  >
+                    Unrivaled expertise for unique travel experiences. We're
+                    here to take you there dream travels.
                   </p>
-                  
-                  <Button 
+
+                  <Button
                     asChild
                     className="bg-[#FF8B00] hover:bg-[#FF8B00]/90 text-white px-6 py-3 rounded-full font-semibold text-base h-auto"
                   >
@@ -186,9 +213,9 @@ export function HeroCarousel() {
                   </Button>
                 </div>
               </motion.div>
-              
+
               {/* Image side */}
-              <motion.div 
+              <motion.div
                 className="w-full md:w-1/2 h-full relative flex items-center justify-center md:justify-end"
                 initial={{ opacity: 0, x: 30 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -198,9 +225,9 @@ export function HeroCarousel() {
                   <div className="relative w-full h-[300px] md:h-[400px] flex items-center justify-center">
                     <div className="absolute w-72 h-72 md:w-96 md:h-96 rounded-full border-2 border-[#0D2E4D]"></div>
                     <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-2 border-[#0D2E4D]">
-                      <img 
+                      <img
                         src={carouselItems[currentIndex].image}
-                        alt="Travel with Bus X" 
+                        alt="Travel with Bus X"
                         className="w-full h-full object-cover"
                       />
                     </div>
@@ -217,9 +244,9 @@ export function HeroCarousel() {
                 ) : currentIndex === 2 ? (
                   <div className="relative w-full h-[300px] md:h-[400px] flex items-center justify-center">
                     <div className="rounded-t-full w-64 h-64 md:w-80 md:h-80 overflow-hidden border-2 border-[#0D2E4D]">
-                      <img 
+                      <img
                         src={carouselItems[currentIndex].image}
-                        alt="Wedding Transportation" 
+                        alt="Wedding Transportation"
                         className="w-full h-full object-cover"
                       />
                     </div>
@@ -232,26 +259,26 @@ export function HeroCarousel() {
                     </div>
                   </div>
                 ) : currentIndex === 3 ? (
-                  <div className="relative w-full h-[300px] md:h-[400px] flex items-center justify-center">
-                    <div className="w-[75%] h-[250px] md:h-[350px] overflow-hidden rounded-lg border-2 border-[#FF8B00]">
-                      <img 
+                  <div className="relative w-full h-4/6 flex items-center justify-center">
+                    <div className="w-[75%] h-full overflow-hidden rounded-lg">
+                      <img
                         src={carouselItems[currentIndex].image}
-                        alt="Music Festival" 
+                        alt="Music Festival"
                         className="w-full h-full object-cover"
                       />
                     </div>
-                    <div className="absolute top-[-10px] left-[20%] w-12 h-12 bg-[#FF8B00] rounded-full flex items-center justify-center text-white">
+                    {/* <div className="absolute top-[-10px] left-[20%] w-12 h-12 bg-[#FF8B00] rounded-full flex items-center justify-center text-white">
                       <i className="fas fa-music text-xl"></i>
-                    </div>
-                    <div className="absolute bottom-[-20px] right-[20%] w-20 h-20 rounded-full border-2 border-[#FF8B00]"></div>
-                    <div className="absolute top-1/4 right-[10%] w-6 h-6 rounded-full bg-[#FF8B00]/60"></div>
+                    </div> */}
+                    {/* <div className="absolute bottom-[-20px] right-[20%] w-20 h-20 rounded-full border-2 border-[#FF8B00]"></div>
+                    <div className="absolute top-1/4 right-[10%] w-6 h-6 rounded-full bg-[#FF8B00]/60"></div> */}
                   </div>
                 ) : currentIndex === 4 ? (
                   <div className="relative w-full h-[300px] md:h-[400px] flex items-center justify-center">
                     <div className="w-[70%] h-[250px] md:h-[350px] overflow-hidden rounded-lg shadow-xl">
-                      <img 
+                      <img
                         src={carouselItems[currentIndex].image}
-                        alt="Water Activities" 
+                        alt="Water Activities"
                         className="w-full h-full object-cover"
                       />
                     </div>
@@ -267,9 +294,9 @@ export function HeroCarousel() {
                 ) : currentIndex === 5 ? (
                   <div className="relative w-full h-[300px] md:h-[400px] flex items-center justify-center">
                     <div className="w-[75%] h-[250px] md:h-[350px] overflow-hidden rounded-lg border-4 border-white shadow-lg">
-                      <img 
+                      <img
                         src={carouselItems[currentIndex].image}
-                        alt="Amazing Travels" 
+                        alt="Amazing Travels"
                         className="w-full h-full object-cover"
                       />
                     </div>
@@ -281,11 +308,11 @@ export function HeroCarousel() {
                     </div>
                   </div>
                 ) : (
-                  <div className="relative w-full h-[300px] md:h-[400px] flex items-center justify-center">
-                    <div className="w-[75%] h-[250px] md:h-[350px] overflow-hidden rounded-lg">
-                      <img 
+                  <div className="relative w-full h-4/6 flex items-center justify-center">
+                    <div className="w-[75%] h-full overflow-hidden rounded-lg">
+                      <img
                         src={carouselItems[currentIndex].image}
-                        alt="Joyful Trip" 
+                        alt="Joyful Trip"
                         className="w-full h-full object-cover"
                       />
                     </div>
@@ -301,7 +328,7 @@ export function HeroCarousel() {
           </div>
         </motion.div>
       </AnimatePresence>
-      
+
       {/* Carousel Controls */}
       <div className="absolute bottom-6 left-0 right-0 flex justify-center space-x-2 z-30">
         {carouselItems.map((_, index) => (
@@ -309,27 +336,27 @@ export function HeroCarousel() {
             key={index}
             onClick={() => goToSlide(index)}
             className={`h-2 rounded-full transition duration-300 ${
-              currentIndex === index 
-                ? "bg-[#FF8B00] w-6" 
+              currentIndex === index
+                ? "bg-[#FF8B00] w-6"
                 : "bg-gray-400 hover:bg-gray-600 w-2"
             }`}
             aria-label={`Go to slide ${index + 1}`}
           ></button>
         ))}
       </div>
-      
-      <button 
+
+      <button
         className={`absolute left-4 top-1/2 transform -translate-y-1/2 text-3xl z-30 hover:text-[#FF8B00] transition-colors duration-300 ${
-          currentIndex === 3 ? 'text-white' : 'text-[#0D2E4D]'
+          currentIndex === 3 ? "text-white" : "text-[#0D2E4D]"
         }`}
         onClick={prevSlide}
         aria-label="Previous slide"
       >
         <i className="fas fa-chevron-left"></i>
       </button>
-      <button 
+      <button
         className={`absolute right-4 top-1/2 transform -translate-y-1/2 text-3xl z-30 hover:text-[#FF8B00] transition-colors duration-300 ${
-          currentIndex === 3 ? 'text-white' : 'text-[#0D2E4D]'
+          currentIndex === 3 ? "text-white" : "text-[#0D2E4D]"
         }`}
         onClick={nextSlide}
         aria-label="Next slide"
