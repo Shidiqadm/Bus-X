@@ -4,80 +4,133 @@ import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 
 // Import gallery images
-import galleryImage1 from "../assets/gallery/WhatsApp Image 2025-05-08 at 11.43.07 AM.jpeg";
-import galleryImage2 from "../assets/gallery/WhatsApp Image 2025-05-08 at 11.43.07 AM (1).jpeg";
-import galleryImage3 from "../assets/gallery/WhatsApp Image 2025-05-08 at 11.43.07 AM (2).jpeg";
-import galleryImage4 from "../assets/gallery/WhatsApp Image 2025-05-08 at 11.43.08 AM.jpeg";
-import galleryImage5 from "../assets/gallery/WhatsApp Image 2025-05-08 at 11.43.08 AM (1).jpeg";
-import galleryImage6 from "../assets/gallery/WhatsApp Image 2025-05-08 at 11.43.08 AM (2).jpeg";
-import galleryImage7 from "../assets/gallery/WhatsApp Image 2025-05-08 at 11.43.08 AM (3).jpeg";
-import galleryImage8 from "../assets/gallery/WhatsApp Image 2025-05-08 at 11.43.09 AM.jpeg";
-import galleryImage9 from "../assets/gallery/WhatsApp Image 2025-05-08 at 11.43.09 AM (1).jpeg";
-import galleryImage10 from "../assets/gallery/WhatsApp Image 2025-05-08 at 11.43.10 AM.jpeg";
-import galleryImage11 from "../assets/gallery/WhatsApp Image 2025-05-08 at 11.43.10 AM (1).jpeg";
-import galleryImage12 from "../assets/gallery/WhatsApp Image 2025-05-08 at 11.43.10 AM (2).jpeg";
+import scenicView1 from "../assets/gallery-renamed/scenic_view_1.jpeg";
+import desertLandscape from "../assets/gallery-renamed/desert_landscape.jpeg";
+import cityPanorama from "../assets/gallery-renamed/city_panorama.jpeg";
+import touristGroup from "../assets/gallery-renamed/tourist_group.jpeg";
+import beachResort from "../assets/gallery-renamed/beach_resort.jpeg";
+import mountainView from "../assets/gallery-renamed/mountain_view.jpeg";
+import culturalHeritage from "../assets/gallery-renamed/cultural_heritage.jpeg";
+import roadTrip from "../assets/gallery-renamed/road_trip.jpeg";
+import architecture from "../assets/gallery-renamed/architecture.jpeg";
+import landmark from "../assets/gallery-renamed/landmark.jpeg";
+import adventureTravel from "../assets/gallery-renamed/adventure_travel.jpeg";
+import historicalSite from "../assets/gallery-renamed/historical_site.jpeg";
+import natureLandscape from "../assets/gallery-renamed/nature_landscape.jpeg";
+import busTravel from "../assets/gallery-renamed/bus_travel.jpeg";
+import wildlifeSafari from "../assets/gallery-renamed/wildlife_safari.jpeg";
+import luxuryTransport from "../assets/gallery-renamed/luxury_transport.jpeg";
+
+// Import video files
+import travelExperienceVideo from "../assets/gallery-renamed/travel_experience.mp4";
+import tourHighlightsVideo from "../assets/gallery-renamed/tour_highlights.mp4";
+
+// Create thumbnail images for videos
+// We'll use existing images as thumbnails for videos
+const travelExperienceThumbnail = culturalHeritage;
+const tourHighlightsThumbnail = touristGroup;
+
+// Define types for gallery items
+interface GalleryItem {
+  src: string;
+  alt: string;
+  type: "image" | "video";
+  thumbnail?: string;
+}
 
 // Gallery items with both images and videos
-const galleryItems = [
+const galleryItems: GalleryItem[] = [
   {
-    src: galleryImage1,
-    alt: "Travel Experience",
+    src: culturalHeritage,
+    alt: "Cultural Heritage",
     type: "image"
   },
   {
-    src: galleryImage2,
-    alt: "Travel Journey",
+    src: beachResort,
+    alt: "Beach Resort",
     type: "image"
   },
   {
-    src: galleryImage3,
-    alt: "Luxury Travel",
+    src: mountainView,
+    alt: "Mountain View",
     type: "image"
   },
   {
-    src: galleryImage4,
-    alt: "Travel Memory",
+    src: adventureTravel,
+    alt: "Adventure Travel",
     type: "image"
   },
   {
-    src: galleryImage5,
-    alt: "Tourist Experience",
+    src: roadTrip,
+    alt: "Road Trip",
     type: "image"
   },
   {
-    src: galleryImage6,
-    alt: "Travel Adventure",
+    src: architecture,
+    alt: "Architecture",
     type: "image"
   },
   {
-    src: galleryImage7,
-    alt: "Group Travel",
+    src: landmark,
+    alt: "Landmark",
     type: "image"
   },
   {
-    src: galleryImage8,
-    alt: "Bus Tour",
+    src: natureLandscape,
+    alt: "Nature Landscape",
     type: "image"
   },
   {
-    src: galleryImage9,
-    alt: "Travel Destination",
+    src: historicalSite,
+    alt: "Historical Site",
     type: "image"
   },
   {
-    src: galleryImage10,
+    src: luxuryTransport,
+    alt: "Luxury Transport",
+    type: "image"
+  },
+  {
+    src: busTravel,
+    alt: "Bus Travel",
+    type: "image"
+  },
+  {
+    src: wildlifeSafari,
+    alt: "Wildlife Safari",
+    type: "image"
+  },
+  {
+    src: scenicView1,
     alt: "Scenic View",
     type: "image"
   },
   {
-    src: galleryImage11,
-    alt: "Cultural Experience",
+    src: desertLandscape,
+    alt: "Desert Landscape",
     type: "image"
   },
   {
-    src: galleryImage12,
-    alt: "Tourist Attraction",
+    src: cityPanorama,
+    alt: "City Panorama",
     type: "image"
+  },
+  {
+    src: touristGroup,
+    alt: "Tourist Group",
+    type: "image"
+  },
+  {
+    src: travelExperienceVideo,
+    thumbnail: travelExperienceThumbnail,
+    alt: "Travel Experience",
+    type: "video"
+  },
+  {
+    src: tourHighlightsVideo,
+    thumbnail: tourHighlightsThumbnail,
+    alt: "Tour Highlights",
+    type: "video"
   }
 ];
 
@@ -98,7 +151,7 @@ const item = {
 
 export function GallerySection() {
   const [currentPreviewIndex, setCurrentPreviewIndex] = useState(0);
-  const [lightboxItem, setLightboxItem] = useState<(typeof galleryItems)[0] | null>(null);
+  const [lightboxItem, setLightboxItem] = useState<GalleryItem | null>(null);
   const autoChangeRef = useRef<number | null>(null);
   
   useEffect(() => {
@@ -127,7 +180,7 @@ export function GallerySection() {
     startAutoChange(); // Reset timer when user clicks
   };
   
-  const openLightbox = (item: typeof galleryItems[0]) => {
+  const openLightbox = (item: GalleryItem) => {
     setLightboxItem(item);
     // Pause auto-change when lightbox is open
     if (autoChangeRef.current) {
@@ -178,7 +231,7 @@ export function GallerySection() {
             ) : (
               <div className="relative w-full h-full">
                 <video 
-                  src={currentItem.src} 
+                  src={currentItem.src}
                   poster={currentItem.thumbnail}
                   className="w-full h-full object-cover cursor-pointer" 
                   controls
@@ -210,8 +263,8 @@ export function GallerySection() {
             whileInView="show"
             viewport={{ once: true, margin: "-100px" }}
           >
-            <div className="grid grid-cols-2 gap-4">
-              {galleryItems.map((item, index) => (
+            <div className="grid grid-cols-2 gap-4 max-h-[500px] overflow-y-auto pr-2">
+              {galleryItems.map((galleryItem, index) => (
                 <motion.div
                   key={index}
                   variants={item}
@@ -220,17 +273,17 @@ export function GallerySection() {
                   }`}
                   onClick={() => handleThumbnailClick(index)}
                 >
-                  {item.type === 'image' ? (
+                  {galleryItem.type === 'image' ? (
                     <img 
-                      src={item.src} 
-                      alt={item.alt} 
+                      src={galleryItem.src} 
+                      alt={galleryItem.alt} 
                       className="w-full h-full object-cover"
                     />
                   ) : (
                     <div className="relative w-full h-full">
                       <img 
-                        src={item.thumbnail} 
-                        alt={item.alt} 
+                        src={galleryItem.thumbnail} 
+                        alt={galleryItem.alt} 
                         className="w-full h-full object-cover"
                       />
                       <div className="absolute inset-0 flex items-center justify-center">
@@ -256,14 +309,14 @@ export function GallerySection() {
             <img 
               src={lightboxItem.src} 
               alt={lightboxItem.alt}
-              className="w-full h-auto max-h-[80vh] object-contain"
+              className="w-full h-auto max-h-[80vh] object-contain bg-black"
             />
           ) : lightboxItem?.type === 'video' ? (
             <video 
               src={lightboxItem.src} 
               controls
               autoPlay
-              className="w-full h-auto max-h-[80vh]"
+              className="w-full h-auto max-h-[80vh] bg-black"
             />
           ) : null}
         </DialogContent>
