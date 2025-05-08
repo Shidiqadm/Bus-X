@@ -144,7 +144,7 @@ export function HeroCarousel() {
           transition={{ duration: 0.5 }}
           className={`${carouselItems[currentIndex].bgColor} h-full w-full flex items-center`}
         >
-          <div className="container mx-auto px-4 md:px-8 py-10 md:py-20 relative">
+          <div className="max-w-[1400px] mx-auto px-20 py-10 md:py-20 relative">
             <div className="flex flex-col md:flex-row h-full items-center justify-between">
               {/* Content side */}
               <motion.div
@@ -157,14 +157,14 @@ export function HeroCarousel() {
                   {carouselItems[currentIndex].subtitle ? (
                     <>
                       <h1
-                        className={`text-4xl md:text-5xl lg:text-6xl font-bold mb-3 leading-tight ${
+                        className={`text-5xl md:text-6xl lg:text-7xl font-bold mb-3 leading-tight ${
                           currentIndex === 3 ? "text-white" : "text-[#0D2E4D]"
                         }`}
                       >
                         {carouselItems[currentIndex].title}
                       </h1>
                       <div className="flex items-center gap-2 mb-3">
-                        <span className="text-6 md:text-6xl lg:text-8xl font-normal text-[#FF8B00] italic" style={{ fontFamily: "'Red Bright Demo', italic" }}>
+                        <span className="text-6xl md:text-7xl lg:text-9xl font-normal text-[#FF8B00] italic" style={{ fontFamily: "'Red Bright Demo', italic" }}>
                           {carouselItems[currentIndex].subtitle}
                         </span>
                         {carouselItems[currentIndex].icon && (
@@ -178,7 +178,7 @@ export function HeroCarousel() {
                     </>
                   ) : (
                     <h1
-                      className={`text-4xl md:text-5xl lg:text-6xl font-bold mb-3 leading-tight ${
+                      className={`text-5xl md:text-6xl lg:text-7xl font-bold mb-3 leading-tight ${
                         currentIndex === 3 ? "text-white" : "text-[#0D2E4D]"
                       }`}
                     >
@@ -187,7 +187,7 @@ export function HeroCarousel() {
                   )}
 
                   <h2
-                    className={`text-3xl md:text-4xl font-bold mb-5 ${
+                    className={`text-4xl md:text-5xl font-bold mb-6 ${
                       currentIndex === 3 ? "text-white" : "text-[#0D2E4D]"
                     }`}
                   >
@@ -195,7 +195,7 @@ export function HeroCarousel() {
                   </h2>
 
                   <p
-                    className={`mb-6 max-w-md ${
+                    className={`mb-8 max-w-md text-lg md:text-xl ${
                       currentIndex === 3 ? "text-gray-300" : "text-gray-600"
                     }`}
                   >
@@ -205,7 +205,7 @@ export function HeroCarousel() {
 
                   <Button
                     asChild
-                    className="bg-[#FF8B00] hover:bg-[#FF8B00]/90 text-white px-6 py-3 rounded-full font-semibold text-base h-auto"
+                    className="bg-[#FF8B00] hover:bg-[#FF8B00]/90 text-white px-8 py-4 rounded-full font-semibold text-lg h-auto"
                   >
                     <a href={carouselItems[currentIndex].cta.link}>
                       {carouselItems[currentIndex].cta.text}
@@ -221,108 +221,68 @@ export function HeroCarousel() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.7, delay: 0.2 }}
               >
-                {currentIndex === 1 ? (
-                  <div className="relative w-full h-[300px] md:h-[400px] flex items-center justify-center">
-                    <div className="absolute w-72 h-72 md:w-96 md:h-96 rounded-full border-2 border-[#0D2E4D]"></div>
-                    <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-2 border-[#0D2E4D]">
-                      <img
-                        src={carouselItems[currentIndex].image}
-                        alt="Travel with Bus X"
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    <div className="absolute top-0 right-0 w-16 h-16 flex items-center justify-center">
-                      <div className="w-5 h-5 rounded-full bg-[#0D2E4D]"></div>
-                    </div>
-                    <div className="absolute bottom-1/4 left-0 w-16 h-16 flex items-center justify-center">
-                      <div className="w-8 h-8 rounded-full border-2 border-[#0D2E4D]"></div>
-                    </div>
-                    <div className="absolute top-1/3 left-1/4 flex items-center justify-center">
-                      <div className="w-3 h-3 rounded-full bg-[#FF8B00]"></div>
-                    </div>
+                {/* All images should be large like the 1st slide */}
+                <div className="relative w-full h-4/6 flex items-center justify-center">
+                  <div className="w-[85%] h-full overflow-hidden rounded-lg">
+                    <img
+                      src={carouselItems[currentIndex].image}
+                      alt={`Slide ${currentIndex + 1}`}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
-                ) : currentIndex === 2 ? (
-                  <div className="relative w-full h-[300px] md:h-[400px] flex items-center justify-center">
-                    <div className="rounded-t-full w-64 h-64 md:w-80 md:h-80 overflow-hidden border-2 border-[#0D2E4D]">
-                      <img
-                        src={carouselItems[currentIndex].image}
-                        alt="Wedding Transportation"
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    <div className="absolute -z-10 top-1/2 -translate-y-1/2 right-1/4 w-32 h-32 rounded-full bg-white"></div>
-                    <div className="absolute bottom-0 left-0 text-[#FF8B00]">
-                      <i className="fas fa-fan text-2xl"></i>
-                    </div>
-                    <div className="absolute top-0 right-10">
-                      <i className="fas fa-leaf text-green-500 text-xl"></i>
-                    </div>
-                  </div>
-                ) : currentIndex === 3 ? (
-                  <div className="relative w-full h-4/6 flex items-center justify-center">
-                    <div className="w-[75%] h-full overflow-hidden rounded-lg">
-                      <img
-                        src={carouselItems[currentIndex].image}
-                        alt="Music Festival"
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    {/* <div className="absolute top-[-10px] left-[20%] w-12 h-12 bg-[#FF8B00] rounded-full flex items-center justify-center text-white">
-                      <i className="fas fa-music text-xl"></i>
-                    </div> */}
-                    {/* <div className="absolute bottom-[-20px] right-[20%] w-20 h-20 rounded-full border-2 border-[#FF8B00]"></div>
-                    <div className="absolute top-1/4 right-[10%] w-6 h-6 rounded-full bg-[#FF8B00]/60"></div> */}
-                  </div>
-                ) : currentIndex === 4 ? (
-                  <div className="relative w-full h-[300px] md:h-[400px] flex items-center justify-center">
-                    <div className="w-[70%] h-[250px] md:h-[350px] overflow-hidden rounded-lg shadow-xl">
-                      <img
-                        src={carouselItems[currentIndex].image}
-                        alt="Water Activities"
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    <div className="absolute top-[30%] -left-4 w-16 h-16 flex items-center justify-center">
-                      <div className="w-10 h-10 rounded-full bg-[#0D2E4D]/20 flex items-center justify-center">
-                        <div className="w-6 h-6 rounded-full bg-[#0D2E4D]/50"></div>
+                  
+                  {/* Decorative elements based on slide */}
+                  {currentIndex === 0 && (
+                    <>
+                      <div className="absolute -bottom-4 -right-4 w-20 h-20 rounded-full bg-[#FF8B00]/20 flex items-center justify-center">
+                        <div className="w-12 h-12 rounded-full bg-[#FF8B00]/40"></div>
                       </div>
-                    </div>
-                    <div className="absolute bottom-[20%] right-[10%] text-[#0D2E4D]">
-                      <i className="fas fa-water text-2xl"></i>
-                    </div>
-                  </div>
-                ) : currentIndex === 5 ? (
-                  <div className="relative w-full h-[300px] md:h-[400px] flex items-center justify-center">
-                    <div className="w-[75%] h-[250px] md:h-[350px] overflow-hidden rounded-lg border-4 border-white shadow-lg">
-                      <img
-                        src={carouselItems[currentIndex].image}
-                        alt="Amazing Travels"
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    <div className="absolute -top-4 right-[25%] w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-md">
-                      <i className="fas fa-globe-americas text-[#FF8B00] text-xl"></i>
-                    </div>
-                    <div className="absolute -bottom-4 left-[30%] w-12 h-12 bg-[#FF8B00]/20 rounded-full flex items-center justify-center">
-                      <div className="w-8 h-8 bg-[#FF8B00]/40 rounded-full"></div>
-                    </div>
-                  </div>
-                ) : (
-                  <div className="relative w-full h-4/6 flex items-center justify-center">
-                    <div className="w-[75%] h-full overflow-hidden rounded-lg">
-                      <img
-                        src={carouselItems[currentIndex].image}
-                        alt="Joyful Trip"
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    <div className="absolute -bottom-4 -right-4 w-20 h-20 rounded-full bg-[#FF8B00]/20 flex items-center justify-center">
-                      <div className="w-12 h-12 rounded-full bg-[#FF8B00]/40"></div>
-                    </div>
-                    <div className="absolute top-1/4 -left-2 w-12 h-12 rounded-full border border-[#FF8B00]"></div>
-                    <div className="absolute top-10 right-1/3 w-3 h-3 rounded-full bg-[#FF8B00]"></div>
-                  </div>
-                )}
+                      <div className="absolute top-1/4 -left-2 w-12 h-12 rounded-full border border-[#FF8B00]"></div>
+                      <div className="absolute top-10 right-1/3 w-3 h-3 rounded-full bg-[#FF8B00]"></div>
+                    </>
+                  )}
+                  
+                  {currentIndex === 1 && (
+                    <>
+                      <div className="absolute top-0 right-0 w-16 h-16 flex items-center justify-center">
+                        <div className="w-5 h-5 rounded-full bg-[#0D2E4D]"></div>
+                      </div>
+                      <div className="absolute bottom-1/4 left-0 w-16 h-16 flex items-center justify-center">
+                        <div className="w-8 h-8 rounded-full border-2 border-[#0D2E4D]"></div>
+                      </div>
+                      <div className="absolute top-1/3 left-1/4 flex items-center justify-center">
+                        <div className="w-3 h-3 rounded-full bg-[#FF8B00]"></div>
+                      </div>
+                    </>
+                  )}
+                  
+                  {currentIndex === 2 && (
+                    <>
+                      <div className="absolute -z-10 top-1/2 -translate-y-1/2 right-1/4 w-32 h-32 rounded-full bg-white"></div>
+                    </>
+                  )}
+                  
+                  {currentIndex === 4 && (
+                    <>
+                      <div className="absolute top-[30%] -left-4 w-16 h-16 flex items-center justify-center">
+                        <div className="w-10 h-10 rounded-full bg-[#0D2E4D]/20 flex items-center justify-center">
+                          <div className="w-6 h-6 rounded-full bg-[#0D2E4D]/50"></div>
+                        </div>
+                      </div>
+                    </>
+                  )}
+                  
+                  {currentIndex === 5 && (
+                    <>
+                      <div className="absolute -top-4 right-[25%] w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-md">
+                        <i className="fas fa-globe-americas text-[#FF8B00] text-xl"></i>
+                      </div>
+                      <div className="absolute -bottom-4 left-[30%] w-12 h-12 bg-[#FF8B00]/20 rounded-full flex items-center justify-center">
+                        <div className="w-8 h-8 bg-[#FF8B00]/40 rounded-full"></div>
+                      </div>
+                    </>
+                  )}
+                </div>
               </motion.div>
             </div>
           </div>
@@ -346,7 +306,7 @@ export function HeroCarousel() {
       </div>
 
       <button
-        className={`absolute left-4 top-1/2 transform -translate-y-1/2 text-3xl z-30 hover:text-[#FF8B00] transition-colors duration-300 ${
+        className={`absolute left-20 top-1/2 transform -translate-y-1/2 text-4xl z-30 hover:text-[#FF8B00] transition-colors duration-300 ${
           currentIndex === 3 ? "text-white" : "text-[#0D2E4D]"
         }`}
         onClick={prevSlide}
@@ -355,7 +315,7 @@ export function HeroCarousel() {
         <i className="fas fa-chevron-left"></i>
       </button>
       <button
-        className={`absolute right-4 top-1/2 transform -translate-y-1/2 text-3xl z-30 hover:text-[#FF8B00] transition-colors duration-300 ${
+        className={`absolute right-20 top-1/2 transform -translate-y-1/2 text-4xl z-30 hover:text-[#FF8B00] transition-colors duration-300 ${
           currentIndex === 3 ? "text-white" : "text-[#0D2E4D]"
         }`}
         onClick={nextSlide}

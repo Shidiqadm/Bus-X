@@ -173,7 +173,7 @@ export function ServicesSection() {
 
   return (
     <section id="services" className="py-20">
-      <div className="container mx-auto px-4">
+      <div className="max-w-[1400px] mx-auto px-20">
         {/* <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -187,14 +187,14 @@ export function ServicesSection() {
           </p>
         </motion.div> */}
 
-        {/* Scrolling Text Banner */}
+        {/* Scrolling Text Banner - Increased speed */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           className="relative mb-16 overflow-hidden text-transparent py-6 [-webkit-text-stroke:0.5px_#000]"
         >
-          <div className="flex items-center gap-6 whitespace-nowrap animate-marquee">
+          <div className="flex items-center gap-6 whitespace-nowrap animate-marquee" style={{ animationDuration: '15s' }}>
             {[...Array(3)].map((_, idx) => (
               <div key={idx} className="flex items-center gap-6 text-5xl font-bold">
                 <span>Travel anywhere and anytime with Bus</span>

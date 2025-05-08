@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import discoverImg from "../assets/discover.png"
 
 interface CircularTourComponentProps {
   className?: string;
@@ -7,7 +8,7 @@ interface CircularTourComponentProps {
 export function CircularTourComponent({ className = "" }: CircularTourComponentProps) {
   return (
     <section className={`py-16 md:py-20 bg-[#FFF8F2] ${className}`}>
-      <div className="container mx-auto px-4">
+      <div className="max-w-[1400px] mx-auto px-20">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-8 md:gap-12">
           <motion.h2 
             className="text-3xl md:text-4xl font-bold text-center lg:text-left mb-8 lg:mb-0 max-w-md md:max-w-lg"
@@ -26,13 +27,13 @@ export function CircularTourComponent({ className = "" }: CircularTourComponentP
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.2 }}
           >
-            <div className="relative flex justify-center">
+            <div className="relative flex items-end justify-end">
               {/* Rotating text circle */}
               <div 
-                className="absolute w-28 h-28 sm:w-32 sm:h-32 md:w-40 md:h-40 bg-white rounded-full z-20 flex items-center justify-center rotate-animation"
+                className="absolute w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 bg-white rounded-full z-30 flex items-center justify-center rotate-animation"
                 style={{ 
-                  top: "-2rem", 
-                  left: "50%", 
+                  top: "-1rem", 
+                  left: "35%", 
                   transform: "translateX(-50%)",
                   transformOrigin: "center center"
                 }}
@@ -40,7 +41,7 @@ export function CircularTourComponent({ className = "" }: CircularTourComponentP
                 <div className="relative w-full h-full">
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div className="text-[#FF8B00]">
-                      <i className="fas fa-exchange-alt text-xl md:text-2xl"></i>
+                      <i className="far fa-sync-alt text-2xl md:text-3xl" style={{ strokeWidth: '1.5px' }}></i>
                     </div>
                   </div>
                   
@@ -54,19 +55,23 @@ export function CircularTourComponent({ className = "" }: CircularTourComponentP
                           fill="transparent"
                         />
                       </defs>
-                      <text className="text-[9px] sm:text-xs font-bold" fill="#0D2E4D">
+                      <text className="text-[10px] sm:text-sm font-bold" fill="#0D2E4D">
                         <textPath xlinkHref="#circlePath" startOffset="0%">
-                          MAKE A TOUR NOW • MAKE A TOUR NOW •
+                          MAKE A TOUR NOW • MAKE A TOUR NOW •   
                         </textPath>
                       </text>
                     </svg>
                   </div>
                 </div>
               </div>
+
+              <div>
+                <img src={discoverImg} alt="Discover" className="object-cover" />
+              </div>
               
-              {/* Image circles */}
-              <div className="flex items-center gap-2 sm:gap-4 mt-6">
-                <div className="w-28 h-28 sm:w-36 sm:h-36 md:w-56 md:h-56 rounded-full overflow-hidden border-4 border-[#FFF8F2] shadow-lg z-10">
+              {/* Image circles - Updated to match Figma with larger right image */}
+              {/* <div className="flex items-center gap-6 sm:gap-0 mt-10">
+                <div className="w-18 h-18 sm:w-24 sm:h-24 md:w-32 md:h-32 rounded-full overflow-hidden border-4 border-[#FFF8F2] z-10">
                   <img 
                     src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?ixlib=rb-4.0.3&auto=format&fit=crop&w=1469&q=80" 
                     alt="City at night" 
@@ -74,33 +79,17 @@ export function CircularTourComponent({ className = "" }: CircularTourComponentP
                   />
                 </div>
                 
-                <div className="w-28 h-28 sm:w-36 sm:h-36 md:w-56 md:h-56 rounded-full overflow-hidden border-4 border-[#FFF8F2] shadow-lg -ml-8 sm:-ml-10 md:-ml-16 relative">
+                <div className="w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 rounded-full overflow-hidden border-4 border-[#FFF8F2] relative z-20">
                   <img 
                     src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?ixlib=rb-4.0.3&auto=format&fit=crop&w=1421&q=80" 
                     alt="Couple traveling" 
                     className="w-full h-full object-cover"
                   />
                 </div>
-              </div>
+              </div> */}
             </div>
           </motion.div>
         </div>
-        
-        <motion.div
-          className="flex justify-center mt-10 md:mt-12"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-        >
-          <a 
-            href="#services"
-            className="bg-[#FF8B00] hover:bg-[#FF8B00]/90 text-white px-5 py-2 md:px-6 md:py-3 rounded-full font-semibold inline-flex items-center gap-2 transition-all duration-300 text-sm md:text-base"
-          >
-            <span>Explore Our Tours</span>
-            <i className="fas fa-arrow-right"></i>
-          </a>
-        </motion.div>
       </div>
     </section>
   );

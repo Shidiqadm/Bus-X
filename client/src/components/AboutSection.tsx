@@ -6,7 +6,7 @@ export function AboutSection() {
 
   return (
     <section id="about" className="py-20 relative">
-      <div className="container mx-auto px-4">
+      <div className="max-w-[1400px] mx-auto px-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start" ref={containerRef}>
           <div className="lg:sticky lg:top-24 lg:h-[calc(100vh-12rem)] lg:flex lg:items-center">
             <motion.div 
@@ -75,33 +75,33 @@ export function AboutSection() {
                 </p>
               </div>
               
-              <div className="pt-8 flex flex-wrap gap-4">
+              <div className="pt-8 flex flex-wrap gap-8">
                 <div className="flex items-center">
-                  <div className="bg-[#FF8B00]/10 w-12 h-12 rounded-full flex items-center justify-center mr-4">
-                    <i className="fas fa-users text-[#FF8B00]"></i>
+                  <div className="bg-[#FF8B00]/10 w-14 h-14 rounded-full flex items-center justify-center mr-4">
+                    <i className="far fa-users text-[#FF8B00]" style={{ strokeWidth: '1.5px' }}></i>
                   </div>
                   <div>
-                    <p className="font-bold text-xl">5000+</p>
+                    <p className="font-semibold text-3xl">5000+</p>
                     <p className="text-gray-600">Happy Customers</p>
                   </div>
                 </div>
                 
                 <div className="flex items-center">
-                  <div className="bg-[#FF8B00]/10 w-12 h-12 rounded-full flex items-center justify-center mr-4">
-                    <i className="fas fa-bus-alt text-[#FF8B00]"></i>
+                  <div className="bg-[#FF8B00]/10 w-14 h-14 rounded-full flex items-center justify-center mr-4">
+                    <i className="far fa-bus-alt text-[#FF8B00]" style={{ strokeWidth: '1.5px' }}></i>
                   </div>
                   <div>
-                    <p className="font-bold text-xl">25+</p>
+                    <p className="font-semibold text-3xl">25+</p>
                     <p className="text-gray-600">Luxury Buses</p>
                   </div>
                 </div>
                 
                 <div className="flex items-center">
-                  <div className="bg-[#FF8B00]/10 w-12 h-12 rounded-full flex items-center justify-center mr-4">
-                    <i className="fas fa-map-marker-alt text-[#FF8B00]"></i>
+                  <div className="bg-[#FF8B00]/10 w-14 h-14 rounded-full flex items-center justify-center mr-4">
+                    <i className="far fa-map-marker-alt text-[#FF8B00]" style={{ strokeWidth: '1.5px' }}></i>
                   </div>
                   <div>
-                    <p className="font-bold text-xl">100+</p>
+                    <p className="font-semibold text-3xl">100+</p>
                     <p className="text-gray-600">Destinations</p>
                   </div>
                 </div>

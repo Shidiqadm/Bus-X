@@ -4,42 +4,42 @@ import { Button } from "@/components/ui/button";
 // Updated features list as requested
 const features = [
   {
-    icon: "fas fa-bus",
+    icon: "far fa-bus",
     title: "White Clean Exterior",
     description: "Our fleet features pristine, well-maintained exteriors that provide both a professional appearance and enhanced visibility on the road."
   },
   {
-    icon: "fas fa-snowflake",
+    icon: "far fa-snowflake",
     title: "Air Conditioned",
     description: "Climate-controlled interiors ensure your comfort regardless of outside weather conditions, with adjustable settings for perfect temperature."
   },
   {
-    icon: "fas fa-life-ring",
+    icon: "far fa-life-ring",
     title: "Seatbelt Fitted",
     description: "Safety is our priority with modern seatbelts installed in all seats, meeting the highest safety standards for your peace of mind."
   },
   {
-    icon: "fas fa-suitcase",
+    icon: "far fa-suitcase",
     title: "Luggage Bays",
     description: "Spacious luggage compartments provide ample storage space for all passenger belongings, keeping the cabin uncluttered and comfortable."
   },
   {
-    icon: "fas fa-window-maximize",
+    icon: "far fa-window-maximize",
     title: "Tinted Windows",
     description: "UV-protected tinted windows enhance privacy while reducing glare and heat, creating a more pleasant travel environment."
   },
   {
-    icon: "fas fa-music",
+    icon: "far fa-music",
     title: "CD/PA Systems",
     description: "State-of-the-art audio systems for entertainment and clear announcements throughout your journey, enhancing the travel experience."
   },
   {
-    icon: "fas fa-door-open",
+    icon: "far fa-door-open",
     title: "Automatic Doors",
     description: "Convenient and safe automatic door systems for smooth boarding and disembarking, operated by our professional drivers."
   },
   {
-    icon: "fas fa-plus-circle",
+    icon: "far fa-plus-circle",
     title: "More & More",
     description: "Additional amenities including USB charging ports, reading lights, reclining seats, and other comforts to elevate your travel experience."
   }
@@ -63,7 +63,7 @@ const item = {
 export function WhyChooseUs() {
   return (
     <section id="why-choose-us" className="py-20 bg-[#0D2E4D] text-white">
-      <div className="container mx-auto px-4">
+      <div className="max-w-[1400px] mx-auto px-20">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -91,7 +91,7 @@ export function WhyChooseUs() {
               className="bg-white bg-opacity-10 rounded-xl p-5 backdrop-blur-sm border border-white border-opacity-20 hover:bg-opacity-15 transition-all duration-300"
             >
               <div className="bg-[#FF8B00] w-14 h-14 rounded-full flex items-center justify-center mb-4">
-                <i className={`${feature.icon} text-white text-xl`}></i>
+                <i className={`${feature.icon} text-white text-xl`} style={{ strokeWidth: '1.5px' }}></i>
               </div>
               <h3 className="text-lg font-semibold mb-2">{feature.title}</h3>
               <p className="text-gray-300 text-sm">{feature.description}</p>

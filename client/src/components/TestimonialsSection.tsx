@@ -41,8 +41,8 @@ const item = {
 
 export function TestimonialsSection() {
   return (
-    <section className="py-20 bg-gray-50">
-      <div className="container mx-auto px-4">
+    <section id="testimonials" className="py-20 bg-[#FFF8F2]">
+      <div className="max-w-[1400px] mx-auto px-20">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

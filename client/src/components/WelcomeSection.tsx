@@ -2,22 +2,22 @@ import { motion } from "framer-motion";
 
 const services = [
   {
-    icon: "fas fa-medal",
+    icon: "far fa-medal",
     title: "Premium Experience",
     description: "Luxurious travel with top-notch amenities and personalized service for your comfort."
   },
   {
-    icon: "fas fa-shield-alt",
+    icon: "far fa-shield-alt",
     title: "Safety First",
     description: "Your safety is our priority with expert drivers and well-maintained vehicles."
   },
   {
-    icon: "fas fa-route",
+    icon: "far fa-route",
     title: "Diverse Destinations",
     description: "From city tours to remote getaways, we'll take you wherever your heart desires."
   },
   {
-    icon: "fas fa-clock",
+    icon: "far fa-clock",
     title: "Punctuality",
     description: "We value your time and ensure our services are always on schedule."
   }
@@ -41,7 +41,7 @@ const item = {
 export function WelcomeSection() {
   return (
     <section className="py-20 bg-gray-50">
-      <div className="container mx-auto px-4">
+      <div className="max-w-[1400px] mx-auto px-20">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -67,10 +67,10 @@ export function WelcomeSection() {
             <motion.div 
               key={index}
               variants={item}
-              className="bg-white rounded-xl shadow-md p-6 text-center transition duration-300 hover:shadow-lg hover:-translate-y-1"
+              className="bg-white rounded-xl p-6 text-center transition duration-300 hover:shadow-lg hover:-translate-y-1"
             >
               <div className="bg-[#FF8B00]/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <i className={`${service.icon} text-[#FF8B00] text-2xl`}></i>
+                <i className={`${service.icon} text-[#FF8B00] text-xl`} style={{ strokeWidth: '1.5px' }}></i>
               </div>
               <h3 className="text-xl font-semibold mb-3">{service.title}</h3>
               <p className="text-gray-600">{service.description}</p>

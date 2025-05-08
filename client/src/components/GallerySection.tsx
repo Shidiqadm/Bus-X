@@ -1,38 +1,83 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 
-// More scalable gallery design with ability to add more images in the future
-const galleryImages = [
+// Import gallery images
+import galleryImage1 from "../assets/gallery/WhatsApp Image 2025-05-08 at 11.43.07 AM.jpeg";
+import galleryImage2 from "../assets/gallery/WhatsApp Image 2025-05-08 at 11.43.07 AM (1).jpeg";
+import galleryImage3 from "../assets/gallery/WhatsApp Image 2025-05-08 at 11.43.07 AM (2).jpeg";
+import galleryImage4 from "../assets/gallery/WhatsApp Image 2025-05-08 at 11.43.08 AM.jpeg";
+import galleryImage5 from "../assets/gallery/WhatsApp Image 2025-05-08 at 11.43.08 AM (1).jpeg";
+import galleryImage6 from "../assets/gallery/WhatsApp Image 2025-05-08 at 11.43.08 AM (2).jpeg";
+import galleryImage7 from "../assets/gallery/WhatsApp Image 2025-05-08 at 11.43.08 AM (3).jpeg";
+import galleryImage8 from "../assets/gallery/WhatsApp Image 2025-05-08 at 11.43.09 AM.jpeg";
+import galleryImage9 from "../assets/gallery/WhatsApp Image 2025-05-08 at 11.43.09 AM (1).jpeg";
+import galleryImage10 from "../assets/gallery/WhatsApp Image 2025-05-08 at 11.43.10 AM.jpeg";
+import galleryImage11 from "../assets/gallery/WhatsApp Image 2025-05-08 at 11.43.10 AM (1).jpeg";
+import galleryImage12 from "../assets/gallery/WhatsApp Image 2025-05-08 at 11.43.10 AM (2).jpeg";
+
+// Gallery items with both images and videos
+const galleryItems = [
   {
-    src: "https://images.unsplash.com/photo-1530521954074-e64f6810b32d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80",
-    alt: "Travel Group",
-    featured: true
+    src: galleryImage1,
+    alt: "Travel Experience",
+    type: "image"
   },
   {
-    src: "https://images.unsplash.com/photo-1474302770737-173ee21bab63?ixlib=rb-4.0.3&auto=format&fit=crop&w=1476&q=80",
+    src: galleryImage2,
+    alt: "Travel Journey",
+    type: "image"
+  },
+  {
+    src: galleryImage3,
+    alt: "Luxury Travel",
+    type: "image"
+  },
+  {
+    src: galleryImage4,
     alt: "Travel Memory",
+    type: "image"
   },
   {
-    src: "https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1383&q=80",
-    alt: "Venice Travel",
+    src: galleryImage5,
+    alt: "Tourist Experience",
+    type: "image"
   },
   {
-    src: "https://images.unsplash.com/photo-1431794062232-2a99a5431c6c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80",
-    alt: "Mountain Vista",
+    src: galleryImage6,
+    alt: "Travel Adventure",
+    type: "image"
   },
   {
-    src: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80",
-    alt: "Beach Travel",
+    src: galleryImage7,
+    alt: "Group Travel",
+    type: "image"
   },
   {
-    src: "https://images.unsplash.com/photo-1465310477141-6fb93167a273?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80",
-    alt: "Group Hiking",
+    src: galleryImage8,
+    alt: "Bus Tour",
+    type: "image"
   },
   {
-    src: "https://images.unsplash.com/photo-1516546453174-5e1098a4b4af?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80",
-    alt: "Bus Travel",
+    src: galleryImage9,
+    alt: "Travel Destination",
+    type: "image"
+  },
+  {
+    src: galleryImage10,
+    alt: "Scenic View",
+    type: "image"
+  },
+  {
+    src: galleryImage11,
+    alt: "Cultural Experience",
+    type: "image"
+  },
+  {
+    src: galleryImage12,
+    alt: "Tourist Attraction",
+    type: "image"
   }
 ];
 
@@ -52,15 +97,54 @@ const item = {
 };
 
 export function GallerySection() {
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [currentPreviewIndex, setCurrentPreviewIndex] = useState(0);
+  const [lightboxItem, setLightboxItem] = useState<(typeof galleryItems)[0] | null>(null);
+  const autoChangeRef = useRef<number | null>(null);
   
-  // Separate featured image from the rest
-  const featuredImg = galleryImages.find(img => img.featured) || galleryImages[0];
-  const regularImages = galleryImages.filter(img => img !== featuredImg);
+  useEffect(() => {
+    // Auto-change preview every 5 seconds
+    startAutoChange();
+    
+    return () => {
+      if (autoChangeRef.current) {
+        clearInterval(autoChangeRef.current);
+      }
+    };
+  }, []);
+  
+  const startAutoChange = () => {
+    if (autoChangeRef.current) {
+      clearInterval(autoChangeRef.current);
+    }
+    
+    autoChangeRef.current = window.setInterval(() => {
+      setCurrentPreviewIndex(prev => (prev + 1) % galleryItems.length);
+    }, 5000);
+  };
+  
+  const handleThumbnailClick = (index: number) => {
+    setCurrentPreviewIndex(index);
+    startAutoChange(); // Reset timer when user clicks
+  };
+  
+  const openLightbox = (item: typeof galleryItems[0]) => {
+    setLightboxItem(item);
+    // Pause auto-change when lightbox is open
+    if (autoChangeRef.current) {
+      clearInterval(autoChangeRef.current);
+    }
+  };
+  
+  const closeLightbox = () => {
+    setLightboxItem(null);
+    startAutoChange(); // Restart auto-change when lightbox is closed
+  };
+
+  const currentItem = galleryItems[currentPreviewIndex];
 
   return (
     <section id="gallery" className="py-20 bg-gray-50">
-      <div className="container mx-auto px-4">
+      <div className="max-w-[1400px] mx-auto px-20">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -68,28 +152,44 @@ export function GallerySection() {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold mb-6">joyful <span className="text-[#FF8B00]">memories</span></h2>
+          <h2 className="text-4xl font-bold mb-6"><span className="text-[#0D2E4D]">JOYFUL</span> <span className="text-[#FF8B00]">MEMORIES</span></h2>
           <p className="text-lg max-w-3xl mx-auto text-gray-600">
             Explore some of the beautiful moments captured during our journeys. 
             Every trip with Bus X creates lasting memories.
           </p>
         </motion.div>
         
-        <div className="flex flex-col lg:flex-row gap-6">
-          {/* Featured Image */}
+        <div className="flex flex-col lg:flex-row gap-8">
+          {/* Large Preview Window */}
           <motion.div 
-            className="lg:w-1/2 bg-black rounded-xl overflow-hidden h-[500px] cursor-pointer relative"
+            className="lg:w-3/5 bg-black rounded-xl overflow-hidden h-[500px] relative"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.5 }}
-            onClick={() => setSelectedImage(featuredImg.src)}
+            onClick={() => openLightbox(currentItem)}
           >
-            <img 
-              src={featuredImg.src} 
-              alt={featuredImg.alt} 
-              className="w-full h-full object-cover opacity-80 transition-transform duration-700 hover:scale-105"
-            />
+            {currentItem.type === 'image' ? (
+              <img 
+                src={currentItem.src} 
+                alt={currentItem.alt} 
+                className="w-full h-full object-cover cursor-pointer"
+              />
+            ) : (
+              <div className="relative w-full h-full">
+                <video 
+                  src={currentItem.src} 
+                  poster={currentItem.thumbnail}
+                  className="w-full h-full object-cover cursor-pointer" 
+                  controls
+                />
+                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                  <div className="w-16 h-16 rounded-full bg-[#FF8B00]/80 flex items-center justify-center">
+                    <i className="fas fa-play text-white text-xl"></i>
+                  </div>
+                </div>
+              </div>
+            )}
             <div className="absolute left-6 bottom-6 z-10">
               <div className="flex flex-col items-start gap-1">
                 <div className="flex space-x-1">
@@ -97,99 +197,75 @@ export function GallerySection() {
                     <div key={dot} className="w-2 h-2 rounded-full bg-[#FF8B00]"></div>
                   ))}
                 </div>
-                <h3 className="text-3xl font-bold text-white">Stunning Adventures</h3>
+                <h3 className="text-2xl font-bold text-white">{currentItem.alt}</h3>
               </div>
             </div>
           </motion.div>
           
-          {/* Grid of regular images - Now more scalable */}
+          {/* Grid of Thumbnails */}
           <motion.div 
-            className="lg:w-1/2 grid grid-cols-2 gap-6"
+            className="lg:w-2/5"
             variants={container}
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, margin: "-100px" }}
           >
-            {regularImages.slice(0, 4).map((image, index) => (
-              <motion.div
-                key={index}
-                variants={item}
-                className={`relative rounded-xl overflow-hidden ${
-                  index === 1 ? "bg-[#FF8B00]" : "bg-black"
-                } cursor-pointer h-[235px]`}
-                onClick={() => setSelectedImage(image.src)}
-              >
-                {index === 1 ? (
-                  <div className="h-full w-full flex items-center justify-center">
-                    <h3 className="text-2xl font-bold text-white text-center px-4">Create Memorable Journeys</h3>
-                  </div>
-                ) : (
-                  <img 
-                    src={image.src} 
-                    alt={image.alt} 
-                    className="w-full h-full object-cover opacity-80 transition-transform duration-700 hover:scale-105"
-                  />
-                )}
-                
-                {/* Dots for aesthetic */}
-                {index === 0 && (
-                  <div className="absolute right-4 bottom-4 flex flex-col gap-1">
-                    {[1, 2, 3, 4].map((dot) => (
-                      <div key={dot} className="w-1.5 h-1.5 rounded-full bg-[#FF8B00]"></div>
-                    ))}
-                  </div>
-                )}
-                
-                {/* Dots for the orange block */}
-                {index === 1 && (
-                  <div className="absolute left-4 top-4 flex flex-col gap-1">
-                    {[1, 2, 3, 4].map((dot) => (
-                      <div key={dot} className="w-1.5 h-1.5 rounded-full bg-white"></div>
-                    ))}
-                  </div>
-                )}
-              </motion.div>
-            ))}
+            <div className="grid grid-cols-2 gap-4">
+              {galleryItems.map((item, index) => (
+                <motion.div
+                  key={index}
+                  variants={item}
+                  className={`relative rounded-xl overflow-hidden bg-black cursor-pointer h-[120px] ${
+                    currentPreviewIndex === index ? 'ring-2 ring-[#FF8B00]' : ''
+                  }`}
+                  onClick={() => handleThumbnailClick(index)}
+                >
+                  {item.type === 'image' ? (
+                    <img 
+                      src={item.src} 
+                      alt={item.alt} 
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <div className="relative w-full h-full">
+                      <img 
+                        src={item.thumbnail} 
+                        alt={item.alt} 
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="w-8 h-8 rounded-full bg-[#FF8B00]/80 flex items-center justify-center">
+                          <i className="fas fa-play text-white text-xs"></i>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </motion.div>
+              ))}
+            </div>
           </motion.div>
         </div>
-
-        {/* Additional scalable grid for more images */}
-        {regularImages.length > 4 && (
-          <motion.div
-            variants={container}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: "-100px" }}
-            className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 mt-6"
-          >
-            {regularImages.slice(4).map((image, index) => (
-              <motion.div
-                key={index + 4}
-                variants={item}
-                className="rounded-xl overflow-hidden bg-black cursor-pointer h-52"
-                onClick={() => setSelectedImage(image.src)}
-              >
-                <img 
-                  src={image.src} 
-                  alt={image.alt} 
-                  className="w-full h-full object-cover opacity-80 transition-transform duration-700 hover:scale-105"
-                />
-              </motion.div>
-            ))}
-          </motion.div>
-        )}
       </div>
 
-      <Dialog open={!!selectedImage} onOpenChange={() => setSelectedImage(null)}>
+      <Dialog open={!!lightboxItem} onOpenChange={closeLightbox}>
         <DialogContent className="max-w-4xl p-0 overflow-hidden bg-transparent border-none">
           <DialogTitle>
-            <VisuallyHidden>Gallery Image</VisuallyHidden>
+            <VisuallyHidden>Gallery Item</VisuallyHidden>
           </DialogTitle>
-          <img 
-            src={selectedImage || ''} 
-            alt="Gallery Preview"
-            className="w-full h-auto max-h-[80vh] object-contain"
-          />
+          {lightboxItem?.type === 'image' ? (
+            <img 
+              src={lightboxItem.src} 
+              alt={lightboxItem.alt}
+              className="w-full h-auto max-h-[80vh] object-contain"
+            />
+          ) : lightboxItem?.type === 'video' ? (
+            <video 
+              src={lightboxItem.src} 
+              controls
+              autoPlay
+              className="w-full h-auto max-h-[80vh]"
+            />
+          ) : null}
         </DialogContent>
       </Dialog>
     </section>

@@ -53,7 +53,7 @@ export default function Home() {
       <GallerySection />
       <ServicesSection />
       <WhyChooseUs />
-      <TestimonialsSection />
+      {/* <TestimonialsSection /> */}
       <ContactSection />
       <Footer />
     </div>
