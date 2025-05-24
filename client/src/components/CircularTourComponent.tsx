@@ -7,10 +7,10 @@ interface CircularTourComponentProps {
 
 export function CircularTourComponent({ className = "" }: CircularTourComponentProps) {
   return (
-    <section className={`py-16 md:py-20 bg-[#FFF8F2] ${className}`}>
+    <section className={`py-16 md:py-20 ${className}`}>
       <div className="max-w-[1400px] mx-auto px-20">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-8 md:gap-12">
-          <motion.h2 
+        <motion.h2
             className="text-3xl md:text-4xl font-bold text-center lg:text-left mb-8 lg:mb-0 max-w-md md:max-w-lg"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -30,23 +30,17 @@ export function CircularTourComponent({ className = "" }: CircularTourComponentP
             <div className="relative flex items-end justify-end">
               {/* Rotating text circle */}
               <div 
-                className="absolute w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 bg-white rounded-full z-30 flex items-center justify-center rotate-animation"
+                className="absolute w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 bg-white rounded-full z-30 flex items-center justify-center"
                 style={{ 
                   top: "-1rem", 
-                  left: "35%", 
+                  left: "55%", 
                   transform: "translateX(-50%)",
                   transformOrigin: "center center"
                 }}
               >
                 <div className="relative w-full h-full">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="text-[#FF8B00]">
-                      <i className="far fa-sync-alt text-2xl md:text-3xl" style={{ strokeWidth: '1.5px' }}></i>
-                    </div>
-                  </div>
-                  
                   {/* The circular text */}
-                  <div className="absolute inset-0">
+                  <div className="absolute inset-0 rotate-animation">
                     <svg className="w-full h-full" viewBox="0 0 100 100">
                       <defs>
                         <path 
@@ -55,12 +49,19 @@ export function CircularTourComponent({ className = "" }: CircularTourComponentP
                           fill="transparent"
                         />
                       </defs>
-                      <text className="text-[10px] sm:text-sm font-bold" fill="#0D2E4D">
+                      <text className="font-normal text-xs" fill="#0D2E4D">
                         <textPath xlinkHref="#circlePath" startOffset="0%">
                           MAKE A TOUR NOW • MAKE A TOUR NOW •   
                         </textPath>
                       </text>
                     </svg>
+                  </div>
+                  
+                  {/* Center flag - static */}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="text-[#FF8B00]">
+                      <i className="fa-regular fa-flag text-2xl md:text-3xl" style={{ strokeWidth: '1.5px' }}></i>
+                    </div>
                   </div>
                 </div>
               </div>

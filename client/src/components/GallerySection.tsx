@@ -196,7 +196,7 @@ export function GallerySection() {
   const currentItem = galleryItems[currentPreviewIndex];
 
   return (
-    <section id="gallery" className="py-20 bg-gray-50">
+    <section id="gallery" className="py-20 bg-[#FFF8F2]">
       <div className="max-w-[1400px] mx-auto px-20">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -205,7 +205,7 @@ export function GallerySection() {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold mb-6"><span className="text-[#0D2E4D]">JOYFUL</span> <span className="text-[#FF8B00]">MEMORIES</span></h2>
+          <h2 className="text-4xl font-bold mb-6"><span className="text-[#0D2E4D]">Joyful</span> <span className="text-[#FF8B00]">Memories</span></h2>
           <p className="text-lg max-w-3xl mx-auto text-gray-600">
             Explore some of the beautiful moments captured during our journeys. 
             Every trip with Bus X creates lasting memories.

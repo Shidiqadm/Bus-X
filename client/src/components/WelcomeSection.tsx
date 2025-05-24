@@ -2,17 +2,17 @@ import { motion } from "framer-motion";
 
 const services = [
   {
-    icon: "far fa-medal",
+    icon: "fa-solid fa-wand-magic-sparkles",
     title: "Premium Experience",
     description: "Luxurious travel with top-notch amenities and personalized service for your comfort."
   },
   {
-    icon: "far fa-shield-alt",
+    icon: "fa-solid fa-shield-heart",
     title: "Safety First",
     description: "Your safety is our priority with expert drivers and well-maintained vehicles."
   },
   {
-    icon: "far fa-route",
+    icon: "fa-solid fa-map-location-dot",
     title: "Diverse Destinations",
     description: "From city tours to remote getaways, we'll take you wherever your heart desires."
   },
@@ -70,7 +70,7 @@ export function WelcomeSection() {
               className="bg-white rounded-xl p-6 text-center transition duration-300 hover:shadow-lg hover:-translate-y-1"
             >
               <div className="bg-[#FF8B00]/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <i className={`${service.icon} text-[#FF8B00] text-xl`} style={{ strokeWidth: '1.5px' }}></i>
+                <i class={`${service.icon} text-[#FF8B00] text-xl`} style={{ strokeWidth: '1.5px' }}></i>
               </div>
               <h3 className="text-xl font-semibold mb-3">{service.title}</h3>
               <p className="text-gray-600">{service.description}</p>

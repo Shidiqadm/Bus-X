@@ -9,6 +9,7 @@ import { TestimonialsSection } from "@/components/TestimonialsSection";
 import { ContactSection } from "@/components/ContactSection";
 import { Footer } from "@/components/Footer";
 import { CircularTourComponent } from "@/components/CircularTourComponent";
+import { JetSkiSection } from "@/components/JetSkiSection";
 import { useEffect } from "react";
 
 export default function Home() {
@@ -54,6 +55,7 @@ export default function Home() {
       <ServicesSection />
       <WhyChooseUs />
       {/* <TestimonialsSection /> */}
+      <JetSkiSection />
       <ContactSection />
       <Footer />
     </div>

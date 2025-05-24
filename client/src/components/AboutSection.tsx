@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
 import { useRef } from "react";
+import busImage from "../assets/gallery-renamed/adventure_travel.jpeg";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export function AboutSection() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -17,7 +19,7 @@ export function AboutSection() {
               className="relative"
             >
               <img 
-                src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-4.0.3&auto=format&fit=crop&w=1469&q=80" 
+                src={busImage} 
                 alt="About Bus X" 
                 className="rounded-lg shadow-lg w-full h-auto"
               />
@@ -68,17 +70,17 @@ export function AboutSection() {
                 </p>
               </div>
               
-              <div>
+              {/* <div>
                 <h3 className="text-2xl font-semibold mb-4">Book Your Ride Today</h3>
                 <p className="text-gray-600">
                   At Bus X, we make every trip special. Book your ride today and travel in comfort, style, and safety!
                 </p>
-              </div>
+              </div> */}
               
               <div className="pt-8 flex flex-wrap gap-8">
                 <div className="flex items-center">
                   <div className="bg-[#FF8B00]/10 w-14 h-14 rounded-full flex items-center justify-center mr-4">
-                    <i className="far fa-users text-[#FF8B00]" style={{ strokeWidth: '1.5px' }}></i>
+                    <i class="fa-regular fa-user" style={{ strokeWidth: '1.5px', color: '#FF8B00' }}></i>
                   </div>
                   <div>
                     <p className="font-semibold text-3xl">5000+</p>
@@ -88,7 +90,7 @@ export function AboutSection() {
                 
                 <div className="flex items-center">
                   <div className="bg-[#FF8B00]/10 w-14 h-14 rounded-full flex items-center justify-center mr-4">
-                    <i className="far fa-bus-alt text-[#FF8B00]" style={{ strokeWidth: '1.5px' }}></i>
+                    <i class="fa-solid fa-van-shuttle" style={{ strokeWidth: '1.5px', color: '#FF8B00' }}></i>
                   </div>
                   <div>
                     <p className="font-semibold text-3xl">25+</p>
@@ -98,7 +100,7 @@ export function AboutSection() {
                 
                 <div className="flex items-center">
                   <div className="bg-[#FF8B00]/10 w-14 h-14 rounded-full flex items-center justify-center mr-4">
-                    <i className="far fa-map-marker-alt text-[#FF8B00]" style={{ strokeWidth: '1.5px' }}></i>
+                    <i class="fa-solid fa-location-dot" style={{ strokeWidth: '1.5px', color: '#FF8B00' }}></i>
                   </div>
                   <div>
                     <p className="font-semibold text-3xl">100+</p>

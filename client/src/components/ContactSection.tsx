@@ -107,7 +107,7 @@ export function ContactSection() {
               
               <div className="flex items-start mb-6">
                 <div className="bg-[#FF8B00]/20 w-12 h-12 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
-                  <i className="far fa-phone-alt text-[#FF8B00]" style={{ strokeWidth: '1.5px' }}></i>
+                  <i className="fa-solid fa-mobile-screen-button text-[#FF8B00]" style={{ strokeWidth: '1.5px' }}></i>
                 </div>
                 <div>
                   <h4 className="font-semibold mb-1">Phone Number</h4>
@@ -185,12 +185,12 @@ export function ContactSection() {
                     name="startFrom"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel className="text-gray-700 mb-1">Start From</FormLabel>
+                        <FormLabel className="text-gray-700">Start From</FormLabel>
                         <FormControl>
                           <Input 
                             {...field} 
                             placeholder="Departure location"
-                            className="px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#FF8B00]" 
+                            className="px-4 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#FF8B00]" 
                           />
                         </FormControl>
                         <FormMessage />
@@ -230,7 +230,7 @@ export function ContactSection() {
                             <Input 
                               {...field} 
                               type="date"
-                              className="px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#FF8B00]" 
+                              className="px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#FF8B00] [&::-webkit-calendar-picker-indicator]:hidden" 
                             />
                             <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none">
                               <i className="far fa-calendar text-gray-400" style={{ strokeWidth: '1.5px' }}></i>
@@ -253,7 +253,13 @@ export function ContactSection() {
                             <Input 
                               {...field} 
                               type="time" 
-                              className="px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#FF8B00]" 
+                              className="px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#FF8B00] [&::-webkit-calendar-picker-indicator]:hidden"
+                              style={{
+                                appearance: 'none',
+                                WebkitAppearance: 'none',
+                                MozAppearance: 'none',
+                                backgroundColor: 'transparent',
+                              }}
                             />
                             <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none">
                               <i className="far fa-clock text-gray-400" style={{ strokeWidth: '1.5px' }}></i>
@@ -360,7 +366,14 @@ export function ContactSection() {
                   )}
                 />
                 
-                <div className="flex gap-4 mt-6">
+                <div className="flex gap-4 mt-6 justify-end">
+                  <Button 
+                    type="button"
+                    className="bg-gray-200 hover:bg-gray-300 text-gray-700 px-5 py-2 rounded-full font-semibold h-auto"
+                    onClick={clearForm}
+                  >
+                    Clear Form
+                  </Button>
                   <Button 
                     type="submit" 
                     className="bg-[#FF8B00] hover:bg-[#FF8B00]/90 text-white px-5 py-2 rounded-full font-semibold h-auto"
@@ -369,13 +382,6 @@ export function ContactSection() {
                     {mutation.isPending ? "Sending..." : "Book Now"}
                   </Button>
                   
-                  <Button 
-                    type="button"
-                    className="bg-gray-200 hover:bg-gray-300 text-gray-700 px-5 py-2 rounded-full font-semibold h-auto"
-                    onClick={clearForm}
-                  >
-                    Clear Form
-                  </Button>
                 </div>
               </form>
             </Form>
