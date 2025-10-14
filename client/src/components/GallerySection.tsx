@@ -20,6 +20,8 @@ import natureLandscape from "../assets/gallery-renamed/nature_landscape.jpeg";
 import busTravel from "../assets/gallery-renamed/bus_travel.jpeg";
 import wildlifeSafari from "../assets/gallery-renamed/wildlife_safari.jpeg";
 import luxuryTransport from "../assets/gallery-renamed/luxury_transport.jpeg";
+import snowParty from "../assets/gallery-renamed/snow_party.jpeg";
+import snowParty1 from "../assets/gallery-renamed/snow_party_1.jpeg";
 
 // Import video files
 import travelExperienceVideo from "../assets/gallery-renamed/travel_experience.mp4";
@@ -118,6 +120,16 @@ const galleryItems: GalleryItem[] = [
   {
     src: touristGroup,
     alt: "Tourist Group",
+    type: "image"
+  },
+  {
+    src: snowParty,
+    alt: "Snow Party",
+    type: "image"
+  },
+  {
+    src: snowParty1,
+    alt: "Snow Party 1",
     type: "image"
   },
   {

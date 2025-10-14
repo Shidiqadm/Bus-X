@@ -25,6 +25,17 @@ export function HeroCarousel() {
 
   const carouselItems: CarouselItem[] = [
     {
+      image: "https://images.pexels.com/photos/31726433/pexels-photo-31726433.jpeg",
+      title: "Based in",
+      subtitle: "Sydney",
+      description: "YOUR TRUSTED TRAVEL PARTNER IN AUSTRALIA",
+      bgColor: "bg-[#0D2E4D]",
+      cta: {
+        text: "Discover Our Services",
+        link: "#services",
+      },
+    },
+    {
       image: joyfulTrip,
       title: "Your joyful",
       subtitle: "trip",
@@ -136,7 +147,7 @@ export function HeroCarousel() {
   };
 
   // Check if current slide should have full-screen image with overlay
-  const isFullScreenSlide = [1, 2, 5].includes(currentIndex);
+  const isFullScreenSlide = [0, 2, 3, 6].includes(currentIndex);
 
   return (
     <section id="home" className="h-screen relative overflow-hidden pt-20">
@@ -227,7 +238,7 @@ export function HeroCarousel() {
                       <>
                         <h1
                           className={`text-5xl md:text-6xl lg:text-7xl font-bold mb-3 leading-tight ${
-                            currentIndex === 3 ? "text-white" : "text-[#0D2E4D]"
+                            currentIndex === 4 ? "text-white" : "text-[#0D2E4D]"
                           }`}
                         >
                           {carouselItems[currentIndex].title}
@@ -248,7 +259,7 @@ export function HeroCarousel() {
                     ) : (
                       <h1
                         className={`text-5xl md:text-6xl lg:text-7xl font-bold mb-3 leading-tight ${
-                          currentIndex === 3 ? "text-white" : "text-[#0D2E4D]"
+                          currentIndex === 4 ? "text-white" : "text-[#0D2E4D]"
                         }`}
                       >
                         {carouselItems[currentIndex].title}
@@ -257,7 +268,7 @@ export function HeroCarousel() {
 
                     <h2
                       className={`text-4xl md:text-5xl font-bold mb-6 ${
-                        currentIndex === 3 ? "text-white" : "text-[#0D2E4D]"
+                        currentIndex === 4 ? "text-white" : "text-[#0D2E4D]"
                       }`}
                     >
                       {carouselItems[currentIndex].description}
@@ -265,7 +276,7 @@ export function HeroCarousel() {
 
                     <p
                       className={`mb-8 max-w-md text-lg md:text-xl ${
-                        currentIndex === 3 ? "text-gray-300" : "text-gray-600"
+                        currentIndex === 4 ? "text-gray-300" : "text-gray-600"
                       }`}
                     >
                       Unrivaled expertise for unique travel experiences. We're
@@ -301,7 +312,7 @@ export function HeroCarousel() {
                     </div>
                     
                     {/* Decorative elements based on slide */}
-                    {currentIndex === 0 && (
+                    {currentIndex === 1 && (
                       <>
                         <div className="absolute -bottom-4 -right-4 w-20 h-20 rounded-full bg-[#FF8B00]/20 flex items-center justify-center">
                           <div className="w-12 h-12 rounded-full bg-[#FF8B00]/40"></div>
@@ -311,7 +322,7 @@ export function HeroCarousel() {
                       </>
                     )}
                     
-                    {currentIndex === 3 && (
+                    {currentIndex === 4 && (
                       <>
                         <div className="absolute top-0 right-0 w-16 h-16 flex items-center justify-center">
                           <div className="w-5 h-5 rounded-full bg-white"></div>
@@ -325,7 +336,7 @@ export function HeroCarousel() {
                       </>
                     )}
                     
-                    {currentIndex === 4 && (
+                    {currentIndex === 5 && (
                       <>
                         <div className="absolute top-[30%] -left-4 w-16 h-16 flex items-center justify-center">
                           <div className="w-10 h-10 rounded-full bg-[#0D2E4D]/20 flex items-center justify-center">
@@ -360,7 +371,7 @@ export function HeroCarousel() {
 
       <button
         className={`absolute left-20 top-1/2 transform -translate-y-1/2 text-4xl z-30 hover:text-[#FF8B00] transition-colors duration-300 ${
-          isFullScreenSlide || currentIndex === 3 ? "text-white" : "text-[#0D2E4D]"
+          isFullScreenSlide || currentIndex === 4 ? "text-white" : "text-[#0D2E4D]"
         }`}
         onClick={prevSlide}
         aria-label="Previous slide"
@@ -369,7 +380,7 @@ export function HeroCarousel() {
       </button>
       <button
         className={`absolute right-20 top-1/2 transform -translate-y-1/2 text-4xl z-30 hover:text-[#FF8B00] transition-colors duration-300 ${
-          isFullScreenSlide || currentIndex === 3 ? "text-white" : "text-[#0D2E4D]"
+          isFullScreenSlide || currentIndex === 4 ? "text-white" : "text-[#0D2E4D]"
         }`}
         onClick={nextSlide}
         aria-label="Next slide"
