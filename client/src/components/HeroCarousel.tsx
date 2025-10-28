@@ -12,6 +12,7 @@ type CarouselItem = {
   title: string;
   subtitle?: string;
   description: string;
+  tagline?: string;
   bgColor: string;
   cta: {
     text: string;
@@ -26,13 +27,12 @@ export function HeroCarousel() {
   const carouselItems: CarouselItem[] = [
     {
       image: "https://images.pexels.com/photos/31726433/pexels-photo-31726433.jpeg",
-      title: "Based in",
-      subtitle: "Sydney",
-      description: "YOUR TRUSTED TRAVEL PARTNER IN AUSTRALIA",
+      title: "Your Trusted Bus and Tour Partner in NSW",
+      description: "Comfortable, reliable, and affordable travel for all your trips.",
       bgColor: "bg-[#0D2E4D]",
       cta: {
-        text: "Discover Our Services",
-        link: "#services",
+        text: "Get a quote",
+        link: "#contact",
       },
     },
     {
@@ -41,37 +41,38 @@ export function HeroCarousel() {
       subtitle: "trip",
       icon: van,
       description: "is waiting",
+      tagline: "YOUR RIDE | YOUR TUNE | YOUR TIME",
       bgColor: "bg-[#FFF8F2]",
       cta: {
         text: "Book Your Journey",
         link: "#contact",
       },
     },
-    {
-      image:
-      "https://images.unsplash.com/photo-1620119948054-6ebec4500f05?q=80&w=3464&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        // "https://images.unsplash.com/photo-1501555088652-021faa106b9b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1473&q=80",
-      title: "TRAVEL",
-      subtitle: "with us",
-      description: "WITH LOW PRICE YOU CAN GO ANYWHERE",
-      bgColor: "bg-white",
-      cta: {
-        text: "Explore Services",
-        link: "#services",
-      },
-    },
-    {
-      image:
-        // "https://images.unsplash.com/photo-1527786356703-4b100091cd2c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1374&q=80",
-        "https://plus.unsplash.com/premium_photo-1729096861671-442f5d4402f7?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      title: "We offer",
-      description: "transportation for wedding events",
-      bgColor: "bg-[#FFF8F2]",
-      cta: {
-        text: "Our Wedding Services",
-        link: "#services",
-      },
-    },
+    // {
+    //   image:
+    //   "https://images.unsplash.com/photo-1620119948054-6ebec4500f05?q=80&w=3464&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    //     // "https://images.unsplash.com/photo-1501555088652-021faa106b9b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1473&q=80",
+    //   title: "TRAVEL",
+    //   subtitle: "with us",
+    //   description: "WITH LOW PRICE YOU CAN GO ANYWHERE",
+    //   bgColor: "bg-white",
+    //   cta: {
+    //     text: "Explore Services",
+    //     link: "#services",
+    //   },
+    // },
+    // {
+    //   image:
+    //     // "https://images.unsplash.com/photo-1527786356703-4b100091cd2c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1374&q=80",
+    //     "https://plus.unsplash.com/premium_photo-1729096861671-442f5d4402f7?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    //   title: "We offer",
+    //   description: "transportation for wedding events",
+    //   bgColor: "bg-[#FFF8F2]",
+    //   cta: {
+    //     text: "Our Wedding Services",
+    //     link: "#services",
+    //   },
+    // },
     {
       image: music,
       title: "joyful",
@@ -83,30 +84,30 @@ export function HeroCarousel() {
         link: "#contact",
       },
     },
-    {
-      image:
-        "https://images.unsplash.com/photo-1564633351631-e85bd59a91af?q=80&w=3496&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      title: "Enjoy big wave",
-      subtitle: "with our jet ski",
-      description: "EXPERIENCE THE THRILL OF THE OCEAN",
-      bgColor: "bg-[#E0F7FF]",
-      cta: {
-        text: "Book Water Activities",
-        link: "#contact",
-      },
-    },
-    {
-      image:
-        "https://images.unsplash.com/photo-1500835556837-99ac94a94552?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80",
-      title: "amazing",
-      subtitle: "travels",
-      description: "DISCOVER THE WORLD'S BEST DESTINATIONS",
-      bgColor: "bg-[#FFF8F2]",
-      cta: {
-        text: "Start Your Adventure",
-        link: "#services",
-      },
-    },
+    // {
+    //   image:
+    //     "https://images.unsplash.com/photo-1564633351631-e85bd59a91af?q=80&w=3496&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    //   title: "Enjoy big wave",
+    //   subtitle: "with our jet ski",
+    //   description: "EXPERIENCE THE THRILL OF THE OCEAN",
+    //   bgColor: "bg-[#E0F7FF]",
+    //   cta: {
+    //     text: "Book Water Activities",
+    //     link: "#contact",
+    //   },
+    // },
+    // {
+    //   image:
+    //     "https://images.unsplash.com/photo-1500835556837-99ac94a94552?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80",
+    //   title: "amazing",
+    //   subtitle: "travels",
+    //   description: "DISCOVER THE WORLD'S BEST DESTINATIONS",
+    //   bgColor: "bg-[#FFF8F2]",
+    //   cta: {
+    //     text: "Start Your Adventure",
+    //     link: "#services",
+    //   },
+    // },
   ];
 
   useEffect(() => {
@@ -147,7 +148,7 @@ export function HeroCarousel() {
   };
 
   // Check if current slide should have full-screen image with overlay
-  const isFullScreenSlide = [0, 2, 3, 6].includes(currentIndex);
+  const isFullScreenSlide = [0].includes(currentIndex);
 
   return (
     <section id="home" className="h-screen relative overflow-hidden pt-20">
@@ -238,7 +239,7 @@ export function HeroCarousel() {
                       <>
                         <h1
                           className={`text-5xl md:text-6xl lg:text-7xl font-bold mb-3 leading-tight ${
-                            currentIndex === 4 ? "text-white" : "text-[#0D2E4D]"
+                            currentIndex === 2 ? "text-white" : "text-[#0D2E4D]"
                           }`}
                         >
                           {carouselItems[currentIndex].title}
@@ -259,7 +260,7 @@ export function HeroCarousel() {
                     ) : (
                       <h1
                         className={`text-5xl md:text-6xl lg:text-7xl font-bold mb-3 leading-tight ${
-                          currentIndex === 4 ? "text-white" : "text-[#0D2E4D]"
+                          currentIndex === 2 ? "text-white" : "text-[#0D2E4D]"
                         }`}
                       >
                         {carouselItems[currentIndex].title}
@@ -268,15 +269,25 @@ export function HeroCarousel() {
 
                     <h2
                       className={`text-4xl md:text-5xl font-bold mb-6 ${
-                        currentIndex === 4 ? "text-white" : "text-[#0D2E4D]"
+                        currentIndex === 2 ? "text-white" : "text-[#0D2E4D]"
                       }`}
                     >
                       {carouselItems[currentIndex].description}
                     </h2>
 
+                    {carouselItems[currentIndex].tagline && (
+                      <p
+                        className={`mb-8 text-base md:text-lg font-semibold tracking-wide ${
+                          currentIndex === 2 ? "text-gray-300" : "text-[#FF8B00]"
+                        }`}
+                      >
+                        {carouselItems[currentIndex].tagline}
+                      </p>
+                    )}
+
                     <p
                       className={`mb-8 max-w-md text-lg md:text-xl ${
-                        currentIndex === 4 ? "text-gray-300" : "text-gray-600"
+                        currentIndex === 2 ? "text-gray-300" : "text-gray-600"
                       }`}
                     >
                       Unrivaled expertise for unique travel experiences. We're
@@ -322,7 +333,7 @@ export function HeroCarousel() {
                       </>
                     )}
                     
-                    {currentIndex === 4 && (
+                    {currentIndex === 2 && (
                       <>
                         <div className="absolute top-0 right-0 w-16 h-16 flex items-center justify-center">
                           <div className="w-5 h-5 rounded-full bg-white"></div>
@@ -371,7 +382,7 @@ export function HeroCarousel() {
 
       <button
         className={`absolute left-20 top-1/2 transform -translate-y-1/2 text-4xl z-30 hover:text-[#FF8B00] transition-colors duration-300 ${
-          isFullScreenSlide || currentIndex === 4 ? "text-white" : "text-[#0D2E4D]"
+          isFullScreenSlide || currentIndex === 2 ? "text-white" : "text-[#0D2E4D]"
         }`}
         onClick={prevSlide}
         aria-label="Previous slide"
@@ -380,7 +391,7 @@ export function HeroCarousel() {
       </button>
       <button
         className={`absolute right-20 top-1/2 transform -translate-y-1/2 text-4xl z-30 hover:text-[#FF8B00] transition-colors duration-300 ${
-          isFullScreenSlide || currentIndex === 4 ? "text-white" : "text-[#0D2E4D]"
+          isFullScreenSlide || currentIndex === 2 ? "text-white" : "text-[#0D2E4D]"
         }`}
         onClick={nextSlide}
         aria-label="Next slide"

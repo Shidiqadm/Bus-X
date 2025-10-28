@@ -130,6 +130,40 @@ const item = {
   show: { y: 0, opacity: 1, transition: { duration: 0.6 } }
 };
 
+type FeaturedService = {
+  emoji: string;
+  title: string;
+  description: string;
+};
+
+const featuredServices: FeaturedService[] = [
+  {
+    emoji: "🎉",
+    title: "Party Bus",
+    description: "Celebrate on the go with lights, music, and good vibes."
+  },
+  {
+    emoji: "✈️",
+    title: "Airport Transfers",
+    description: "Reliable and comfortable rides to and from the airport."
+  },
+  {
+    emoji: "🚢",
+    title: "Cruise Transfers",
+    description: "Stress-free pickup and drop-off for cruise passengers."
+  },
+  {
+    emoji: "🗺️",
+    title: "Day Tours",
+    description: "Explore Sydney and surrounding areas in style."
+  },
+  {
+    emoji: "💍",
+    title: "Weddings",
+    description: "Elegant and spacious transport for your special day."
+  }
+];
+
 export function ServicesSection() {
   // State for service card pagination
   const [currentPage, setCurrentPage] = useState(0);
@@ -192,6 +226,38 @@ export function ServicesSection() {
           ))}
         </div>
       </motion.div>
+
+      <div className="max-w-[1400px] mx-auto px-20 mt-6">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.5 }}
+          className="text-center mb-12"
+        >
+          <h2 className="text-4xl font-bold">Discover our services</h2>
+        </motion.div>
+
+        <motion.div 
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-100px" }}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6"
+        >
+          {featuredServices.map((svc, idx) => (
+            <motion.div 
+              key={idx}
+              variants={item}
+              className="bg-white rounded-xl p-6 shadow-sm border hover:shadow-md transition"
+            >
+              <div className="text-4xl mb-3" aria-hidden>{svc.emoji}</div>
+              <h3 className="text-xl font-semibold mb-2">{svc.title}</h3>
+              <p className="text-gray-600 text-sm leading-relaxed">{svc.description}</p>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
     </section>
   );
 }

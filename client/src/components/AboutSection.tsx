@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { useRef } from "react";
 import busImage from "../assets/gallery-renamed/adventure_travel.jpeg";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export function AboutSection() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -41,32 +40,15 @@ export function AboutSection() {
               <h2 className="text-4xl font-bold">About Us</h2>
               
               <div className="mb-8">
-                <h3 className="text-2xl font-semibold mb-4">Welcome to Bus X</h3>
+                <h3 className="text-2xl font-semibold mb-4">Welcome to Bus X Travel – a family-run business dedicated to turning every journey into a celebration!</h3>
                 <p className="text-gray-600 mb-4">
-                  Your ultimate travel experience. Bus X is an Australian-owned and operated luxury transportation service, dedicated to providing premium travel experiences across Sydney, Hunter Valley, Blue Mountains, and Canberra. Whether it's a wedding, party, corporate event, or group trip, we ensure a stylish and seamless journey.
+                  At Bus X Travel, we’re not just a bus service; we’re a family bringing fun, comfort, and unforgettable memories to your trips. Whether it’s a party, airport run, cruise trip, wedding, or a full-day tour, we make sure every ride is lively, safe, and full of good vibes.
+                </p>
+                <p className="text-gray-600 mb-4">
+                  Our 21-seat party bus comes fully loaded with lights, music, air-conditioning, and  perfect for friends, family, or any celebration on the move. Being a family business, we care about every detail – from smooth rides to happy passengers – because your experience matters to us like it matters to our own family.
                 </p>
                 <p className="text-gray-600">
-                  Our modern fleet is equipped with comfortable seating, ambient lighting, and high-quality sound systems for an unforgettable ride. Safety is our priority; our vehicles are regularly maintained, and our professional drivers ensure a smooth, timely journey.
-                </p>
-              </div>
-              
-              <div>
-                <h3 className="text-2xl font-semibold mb-4">Our Mission</h3>
-                <p className="text-gray-600 mb-4">
-                  At Bus X, our mission is to redefine travel by combining luxury, safety, and personalized service. We strive to create journeys that are as memorable as the destinations themselves.
-                </p>
-                <p className="text-gray-600">
-                  We're committed to providing reliable transportation solutions that cater to diverse needs while maintaining the highest standards of comfort and customer satisfaction.
-                </p>
-              </div>
-              
-              <div>
-                <h3 className="text-2xl font-semibold mb-4">Our Vision</h3>
-                <p className="text-gray-600 mb-4">
-                  We envision becoming the premier choice for luxury bus travel globally, setting new benchmarks for excellence in the transportation industry.
-                </p>
-                <p className="text-gray-600">
-                  Our goal is to expand our services while maintaining our core values of exceptional service, sustainability, and creating unforgettable travel experiences for our clients.
+                  With Bus X Travel, your trip isn’t just a ride – it’s a party, a memory, and a story you’ll remember. Your trip. Your crew. Your vibe. Hop in, turn up the music, and let’s make every journey unforgettable 🎶
                 </p>
               </div>
               
@@ -80,7 +62,7 @@ export function AboutSection() {
               <div className="pt-8 flex flex-wrap gap-8">
                 <div className="flex items-center">
                   <div className="bg-[#FF8B00]/10 w-14 h-14 rounded-full flex items-center justify-center mr-4">
-                    <i class="fa-regular fa-user" style={{ strokeWidth: '1.5px', color: '#FF8B00' }}></i>
+                    <i className="fa-regular fa-user" style={{ strokeWidth: '1.5px', color: '#FF8B00' }}></i>
                   </div>
                   <div>
                     <p className="font-semibold text-3xl">5000+</p>
@@ -90,7 +72,7 @@ export function AboutSection() {
                 
                 <div className="flex items-center">
                   <div className="bg-[#FF8B00]/10 w-14 h-14 rounded-full flex items-center justify-center mr-4">
-                    <i class="fa-solid fa-van-shuttle" style={{ strokeWidth: '1.5px', color: '#FF8B00' }}></i>
+                    <i className="fa-solid fa-van-shuttle" style={{ strokeWidth: '1.5px', color: '#FF8B00' }}></i>
                   </div>
                   <div>
                     <p className="font-semibold text-3xl">25+</p>
@@ -100,7 +82,7 @@ export function AboutSection() {
                 
                 <div className="flex items-center">
                   <div className="bg-[#FF8B00]/10 w-14 h-14 rounded-full flex items-center justify-center mr-4">
-                    <i class="fa-solid fa-location-dot" style={{ strokeWidth: '1.5px', color: '#FF8B00' }}></i>
+                    <i className="fa-solid fa-location-dot" style={{ strokeWidth: '1.5px', color: '#FF8B00' }}></i>
                   </div>
                   <div>
                     <p className="font-semibold text-3xl">100+</p>
