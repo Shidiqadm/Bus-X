@@ -4,12 +4,12 @@ import { WelcomeSection } from "@/components/WelcomeSection";
 import { AboutSection } from "@/components/AboutSection";
 import { GallerySection } from "@/components/GallerySection";
 import { ServicesSection } from "@/components/ServicesSection";
-import { WhyChooseUs } from "@/components/WhyChooseUs";
+// import { WhyChooseUs } from "@/components/WhyChooseUs";
 import { TestimonialsSection } from "@/components/TestimonialsSection";
 import { ContactSection } from "@/components/ContactSection";
 import { Footer } from "@/components/Footer";
-import { CircularTourComponent } from "@/components/CircularTourComponent";
-import { JetSkiSection } from "@/components/JetSkiSection";
+// import { CircularTourComponent } from "@/components/CircularTourComponent";
+// import { JetSkiSection } from "@/components/JetSkiSection";
 import { useEffect } from "react";
 
 export default function Home() {
@@ -50,12 +50,12 @@ export default function Home() {
       <HeroCarousel />
       <WelcomeSection />
       <AboutSection />
-      <CircularTourComponent />
+      {/* <CircularTourComponent /> */}
       <GallerySection />
       <ServicesSection />
-      <WhyChooseUs />
+      {/* <WhyChooseUs /> */}
       {/* <TestimonialsSection /> */}
-      <JetSkiSection />
+      {/* <JetSkiSection /> */}
       <ContactSection />
       <Footer />
     </div>

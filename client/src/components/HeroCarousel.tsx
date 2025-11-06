@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import joyfulTrip from "../assets/Hero image.png";
 import van from "../assets/van.png";
 import music from "../assets/musicfest.png";
+import busTravel from "../assets/gallery-renamed/snow_party.jpeg";
 
 type CarouselItem = {
   image: string;
@@ -42,9 +43,9 @@ export function HeroCarousel() {
       icon: van,
       description: "is waiting",
       tagline: "YOUR RIDE | YOUR TUNE | YOUR TIME",
-      bgColor: "bg-[#FFF8F2]",
+      bgColor: "bg-gradient-to-br from-purple-900 via-indigo-900 to-pink-900",
       cta: {
-        text: "Book Your Journey",
+        text: "Get a quote",
         link: "#contact",
       },
     },
@@ -74,16 +75,26 @@ export function HeroCarousel() {
     //   },
     // },
     {
-      image: music,
-      title: "joyful",
-      subtitle: "music fest",
-      description: "EXPERIENCE THE BEST LIVE PERFORMANCES",
-      bgColor: "bg-black",
+      image: busTravel,
+      title: "Family Running Business",
+      description: "Your trusted partner for comfortable and reliable bus services across NSW",
+      bgColor: "bg-[#FFF8F2]",
       cta: {
-        text: "Book Festival Transport",
+        text: "Get a quote",
         link: "#contact",
       },
     },
+    // {
+    //   image: music,
+    //   title: "joyful",
+    //   subtitle: "music fest",
+    //   description: "EXPERIENCE THE BEST LIVE PERFORMANCES",
+    //   bgColor: "bg-black",
+    //   cta: {
+    //     text: "Book Festival Transport",
+    //     link: "#contact",
+    //   },
+    // },
     // {
     //   image:
     //     "https://images.unsplash.com/photo-1564633351631-e85bd59a91af?q=80&w=3496&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -209,10 +220,6 @@ export function HeroCarousel() {
                     {carouselItems[currentIndex].description}
                   </h2>
 
-                  <p className="mb-10 max-w-2xl mx-auto text-lg md:text-xl text-gray-200">
-                    Unrivaled expertise for unique travel experiences. We're
-                    here to take you there dream travels.
-                  </p>
 
                   <Button
                     asChild
@@ -239,13 +246,15 @@ export function HeroCarousel() {
                       <>
                         <h1
                           className={`text-5xl md:text-6xl lg:text-7xl font-bold mb-3 leading-tight ${
-                            currentIndex === 2 ? "text-white" : "text-[#0D2E4D]"
+                            currentIndex === 2 ? "text-[#0D2E4D]" : currentIndex === 1 ? "text-white" : "text-[#0D2E4D]"
                           }`}
                         >
                           {carouselItems[currentIndex].title}
                         </h1>
                         <div className="flex items-center gap-2 mb-3">
-                          <span className="text-6xl md:text-7xl lg:text-9xl font-normal text-[#FF8B00] italic" style={{ fontFamily: "'Red Bright Demo', italic" }}>
+                          <span className={`text-6xl md:text-7xl lg:text-9xl font-normal italic ${
+                            currentIndex === 1 ? "text-[#FF8B00]" : "text-[#FF8B00]"
+                          }`} style={{ fontFamily: "'Red Bright Demo', italic", textShadow: currentIndex === 1 ? '0 0 30px rgba(255, 139, 0, 0.6)' : 'none' }}>
                             {carouselItems[currentIndex].subtitle}
                           </span>
                           {carouselItems[currentIndex].icon && (
@@ -259,8 +268,8 @@ export function HeroCarousel() {
                       </>
                     ) : (
                       <h1
-                        className={`text-5xl md:text-6xl lg:text-7xl font-bold mb-3 leading-tight ${
-                          currentIndex === 2 ? "text-white" : "text-[#0D2E4D]"
+                        className={`text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight ${
+                          currentIndex === 2 ? "text-[#0D2E4D]" : "text-[#0D2E4D]"
                         }`}
                       >
                         {carouselItems[currentIndex].title}
@@ -268,8 +277,8 @@ export function HeroCarousel() {
                     )}
 
                     <h2
-                      className={`text-4xl md:text-5xl font-bold mb-6 ${
-                        currentIndex === 2 ? "text-white" : "text-[#0D2E4D]"
+                      className={`text-xl md:text-2xl lg:text-3xl font-medium mb-8 ${
+                        currentIndex === 2 ? "text-[#0D2E4D]" : currentIndex === 1 ? "text-white" : "text-[#0D2E4D]"
                       }`}
                     >
                       {carouselItems[currentIndex].description}
@@ -277,22 +286,15 @@ export function HeroCarousel() {
 
                     {carouselItems[currentIndex].tagline && (
                       <p
-                        className={`mb-8 text-base md:text-lg font-semibold tracking-wide ${
+                        className={`mb-8 text-2xl md:text-3xl lg:text-4xl font-bold tracking-wider ${
                           currentIndex === 2 ? "text-gray-300" : "text-[#FF8B00]"
                         }`}
+                        style={{ textShadow: currentIndex === 1 ? '0 0 20px rgba(255, 139, 0, 0.5)' : 'none' }}
                       >
                         {carouselItems[currentIndex].tagline}
                       </p>
                     )}
 
-                    <p
-                      className={`mb-8 max-w-md text-lg md:text-xl ${
-                        currentIndex === 2 ? "text-gray-300" : "text-gray-600"
-                      }`}
-                    >
-                      Unrivaled expertise for unique travel experiences. We're
-                      here to take you there dream travels.
-                    </p>
 
                     <Button
                       asChild
@@ -382,7 +384,7 @@ export function HeroCarousel() {
 
       <button
         className={`absolute left-20 top-1/2 transform -translate-y-1/2 text-4xl z-30 hover:text-[#FF8B00] transition-colors duration-300 ${
-          isFullScreenSlide || currentIndex === 2 ? "text-white" : "text-[#0D2E4D]"
+          isFullScreenSlide || currentIndex === 2 ? "text-[#0D2E4D]" : "text-[#0D2E4D]"
         }`}
         onClick={prevSlide}
         aria-label="Previous slide"
@@ -391,7 +393,7 @@ export function HeroCarousel() {
       </button>
       <button
         className={`absolute right-20 top-1/2 transform -translate-y-1/2 text-4xl z-30 hover:text-[#FF8B00] transition-colors duration-300 ${
-          isFullScreenSlide || currentIndex === 2 ? "text-white" : "text-[#0D2E4D]"
+          isFullScreenSlide || currentIndex === 2 ? "text-[#0D2E4D]" : "text-[#0D2E4D]"
         }`}
         onClick={nextSlide}
         aria-label="Next slide"

@@ -22,10 +22,10 @@ export function AboutSection() {
                 alt="About Bus X" 
                 className="rounded-lg shadow-lg w-full h-auto"
               />
-              <div className="absolute -bottom-6 -right-6 bg-[#FF8B00] text-white p-6 rounded-lg hidden md:block">
+              {/* <div className="absolute -bottom-6 -right-6 bg-[#FF8B00] text-white p-6 rounded-lg hidden md:block">
                 <p className="text-2xl font-bold mb-1">10+</p>
                 <p className="text-sm">Years of Excellence</p>
-              </div>
+              </div> */}
             </motion.div>
           </div>
           
@@ -59,7 +59,7 @@ export function AboutSection() {
                 </p>
               </div> */}
               
-              <div className="pt-8 flex flex-wrap gap-8">
+              {/* <div className="pt-8 flex flex-wrap gap-8">
                 <div className="flex items-center">
                   <div className="bg-[#FF8B00]/10 w-14 h-14 rounded-full flex items-center justify-center mr-4">
                     <i className="fa-regular fa-user" style={{ strokeWidth: '1.5px', color: '#FF8B00' }}></i>
@@ -89,7 +89,7 @@ export function AboutSection() {
                     <p className="text-gray-600">Destinations</p>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </motion.div>
           </div>
         </div>

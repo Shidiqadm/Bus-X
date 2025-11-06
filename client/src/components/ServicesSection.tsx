@@ -216,10 +216,10 @@ export function ServicesSection() {
         <div className="flex items-center gap-6 whitespace-nowrap animate-marquee" style={{ animationDuration: '15s' }}>
           {[...Array(3)].map((_, idx) => (
             <div key={idx} className="flex items-center gap-6 text-5xl font-bold text-slate-200">
-              <span>Travel anywhere and anytime with Bus</span>
+              <span>Your Trip Your Time Your Tune with Bus</span>
               <img src={xlogo} alt="X Logo" className="w-8 h-8" />
               <span className="mx-4">•</span>
-              <span>Travel anywhere and anytime with Bus</span>
+              <span>Your Trip Your Time Your Tune with Bus</span>
               <img src={xlogo} alt="X Logo" className="w-8 h-8" />
               <span className="mx-4">•</span>
             </div>
