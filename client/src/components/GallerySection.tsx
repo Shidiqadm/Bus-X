@@ -209,7 +209,7 @@ export function GallerySection() {
 
   return (
     <section id="gallery" className="py-20 bg-[#FFF8F2]">
-      <div className="max-w-[1400px] mx-auto px-20">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-20">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -227,7 +227,7 @@ export function GallerySection() {
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Large Preview Window */}
           <motion.div 
-            className="lg:w-3/5 bg-black rounded-xl overflow-hidden h-[500px] relative"
+            className="lg:w-3/5 bg-black rounded-xl overflow-hidden h-[260px] sm:h-[420px] lg:h-[500px] relative"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
@@ -275,7 +275,7 @@ export function GallerySection() {
             whileInView="show"
             viewport={{ once: true, margin: "-100px" }}
           >
-            <div className="grid grid-cols-2 gap-4 max-h-[500px] overflow-y-auto pr-2">
+            <div className="grid grid-cols-2 gap-4 max-h-[260px] sm:max-h-[420px] lg:max-h-[500px] overflow-y-auto pr-2">
               {galleryItems.map((galleryItem, index) => (
                 <motion.div
                   key={index}

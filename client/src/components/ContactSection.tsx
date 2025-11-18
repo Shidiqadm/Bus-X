@@ -79,8 +79,8 @@ export function ContactSection() {
   }
 
   return (
-    <section id="contact" className="py-20">
-      <div className="max-w-[1400px] mx-auto px-20">
+    <section id="contact" className="py-16 sm:py-20">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-20">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -129,19 +129,19 @@ export function ContactSection() {
             <div className="bg-gray-50 rounded-xl p-8">
               <h3 className="text-2xl font-semibold mb-6">Business Hours</h3>
               
-              <div className="flex justify-between mb-3">
+              <div className="flex flex-col sm:flex-row sm:justify-between mb-3 gap-1 sm:gap-0 text-base">
                 <span className="font-medium">Monday - Friday:</span>
-                <span>8:00 AM - 8:00 PM</span>
+                <span className="sm:text-right">8:00 AM - 8:00 PM</span>
               </div>
               
-              <div className="flex justify-between mb-3">
+              <div className="flex flex-col sm:flex-row sm:justify-between mb-3 gap-1 sm:gap-0 text-base">
                 <span className="font-medium">Saturday:</span>
-                <span>9:00 AM - 6:00 PM</span>
+                <span className="sm:text-right">9:00 AM - 6:00 PM</span>
               </div>
               
-              <div className="flex justify-between">
+              <div className="flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-0 text-base">
                 <span className="font-medium">Sunday:</span>
-                <span>10:00 AM - 4:00 PM</span>
+                <span className="sm:text-right">10:00 AM - 4:00 PM</span>
               </div>
             </div>
           </motion.div>
@@ -230,7 +230,7 @@ export function ContactSection() {
                             <Input 
                               {...field} 
                               type="date"
-                              className="px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#FF8B00] [&::-webkit-calendar-picker-indicator]:hidden" 
+                              className="px-4 pr-10 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#FF8B00] [&::-webkit-calendar-picker-indicator]:hidden" 
                             />
                             <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none">
                               <i className="far fa-calendar text-gray-400" style={{ strokeWidth: '1.5px' }}></i>
@@ -253,7 +253,7 @@ export function ContactSection() {
                             <Input 
                               {...field} 
                               type="time" 
-                              className="px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#FF8B00] [&::-webkit-calendar-picker-indicator]:hidden"
+                              className="px-4 pr-10 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#FF8B00] [&::-webkit-calendar-picker-indicator]:hidden"
                               style={{
                                 appearance: 'none',
                                 WebkitAppearance: 'none',
@@ -366,20 +366,20 @@ export function ContactSection() {
                   )}
                 />
                 
-                <div className="flex gap-4 mt-6 justify-end">
+                <div className="flex flex-col sm:flex-row gap-3 mt-6 justify-stretch sm:justify-end pb-[env(safe-area-inset-bottom)]">
                   <Button 
                     type="button"
-                    className="bg-gray-200 hover:bg-gray-300 text-gray-700 px-5 py-2 rounded-full font-semibold h-auto"
+                    className="bg-gray-200 hover:bg-gray-300 text-gray-700 px-5 py-2 rounded-full font-semibold h-auto w-full sm:w-auto"
                     onClick={clearForm}
                   >
                     Clear Form
                   </Button>
                   <Button 
                     type="submit" 
-                    className="bg-[#FF8B00] hover:bg-[#FF8B00]/90 text-white px-5 py-2 rounded-full font-semibold h-auto"
+                    className="bg-[#FF8B00] hover:bg-[#FF8B00]/90 text-white px-5 py-2 rounded-full font-semibold h-auto w-full sm:w-auto"
                     disabled={mutation.isPending}
                   >
-                    {mutation.isPending ? "Sending..." : "Book Now"}
+                    {mutation.isPending ? "Sending..." : "Get a Quote"}
                   </Button>
                   
                 </div>

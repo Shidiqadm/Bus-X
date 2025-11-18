@@ -4,7 +4,7 @@ import xlogo from "@/assets/xlogo-foot.svg";
 export function Footer() {
   return (
     <footer className="bg-[#FFF3EE] text-gray-800 pt-16 pb-8">
-      <div className="max-w-[1400px] mx-auto px-20">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-20">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
           <div className="col-span-1">
             <Link href="/" className="flex items-center mb-6">

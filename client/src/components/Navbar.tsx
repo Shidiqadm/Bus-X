@@ -33,7 +33,7 @@ export function Navbar() {
 
   return (
     <header className={`fixed w-full top-0 left-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white shadow-md py-2' : 'bg-transparent py-4'}`}>
-      <div className="max-w-[1400px] mx-auto px-20 py-3">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-20 py-3">
         <div className="flex justify-between items-center">
           <Link href="/" className="flex items-center">
             <img src={logo} alt="Bus X Logo" className="w-full h-10" />
@@ -77,7 +77,7 @@ export function Navbar() {
               className="bg-[#FF8B00] hover:bg-[#FF8B00]/90 text-white rounded-full font-semibold mx-4"
               onClick={closeMenu}
             >
-              <a href="#contact">Book Now</a>
+              <a href="#contact">Get a Quote</a>
             </Button>
           </div>
         </div>

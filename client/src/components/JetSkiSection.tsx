@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 
 export function JetSkiSection() {
   return (
-    <section className="relative h-screen overflow-hidden">
+    <section className="relative min-h-[80svh] md:h-screen overflow-hidden">
       {/* Background Image */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -17,7 +17,7 @@ export function JetSkiSection() {
       
       {/* Content */}
       <div className="relative z-10 h-full flex items-center">
-        <div className="max-w-[1400px] mx-auto px-20 w-full">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-20 w-full">
           <div className="flex justify-end">
             <motion.div 
               className="max-w-lg text-right"
