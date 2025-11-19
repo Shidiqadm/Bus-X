@@ -27,16 +27,6 @@ export function HeroCarousel() {
 
   const carouselItems: CarouselItem[] = [
     {
-      image: "https://images.pexels.com/photos/31726433/pexels-photo-31726433.jpeg",
-      title: "Your Trusted Bus and Tour Partner in NSW",
-      description: "Comfortable, reliable, and affordable travel for all your trips.",
-      bgColor: "bg-[#0D2E4D]",
-      cta: {
-        text: "Get a quote",
-        link: "#contact",
-      },
-    },
-    {
       image: joyfulTrip,
       title: "Your joyful",
       subtitle: "trip",
@@ -44,6 +34,16 @@ export function HeroCarousel() {
       description: "is waiting",
       tagline: "YOUR RIDE | YOUR TUNE | YOUR TIME",
       bgColor: "bg-gradient-to-br from-purple-900 via-indigo-900 to-pink-900",
+      cta: {
+        text: "Get a quote",
+        link: "#contact",
+      },
+    },
+    {
+      image: "https://images.pexels.com/photos/31726433/pexels-photo-31726433.jpeg",
+      title: "Your Trusted Bus and Tour Partner in NSW",
+      description: "Comfortable, reliable, and affordable travel for all your trips.",
+      bgColor: "bg-[#0D2E4D]",
       cta: {
         text: "Get a quote",
         link: "#contact",
@@ -159,7 +159,7 @@ export function HeroCarousel() {
   };
 
   // Check if current slide should have full-screen image with overlay
-  const isFullScreenSlide = [0].includes(currentIndex);
+  const isFullScreenSlide = [1, 2].includes(currentIndex);
 
   return (
     <section id="home" className={`relative overflow-hidden ${isFullScreenSlide ? 'pt-0' : 'pt-16 sm:pt-20'} ${isFullScreenSlide ? '' : carouselItems[currentIndex].bgColor}`}>
@@ -246,7 +246,7 @@ export function HeroCarousel() {
                       <>
                         <h1
                           className={`text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-3 leading-tight ${
-                            currentIndex === 2 ? "text-[#0D2E4D]" : currentIndex === 1 ? "text-white" : "text-[#0D2E4D]"
+                            currentIndex === 2 ? "text-[#0D2E4D]" : currentIndex === 0 ? "text-white" : "text-[#0D2E4D]"
                           }`}
                         >
                           {carouselItems[currentIndex].title}
@@ -268,9 +268,7 @@ export function HeroCarousel() {
                       </>
                     ) : (
                       <h1
-                        className={`text-3xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight ${
-                          currentIndex === 2 ? "text-[#0D2E4D]" : "text-[#0D2E4D]"
-                        }`}
+                        className="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight text-white"
                       >
                         {carouselItems[currentIndex].title}
                       </h1>
@@ -278,7 +276,7 @@ export function HeroCarousel() {
 
                     <h2
                       className={`text-base sm:text-xl md:text-2xl lg:text-3xl font-medium mb-8 ${
-                        currentIndex === 2 ? "text-[#0D2E4D]" : currentIndex === 1 ? "text-white" : "text-[#0D2E4D]"
+                        currentIndex === 2 ? "text-[#0D2E4D]" : currentIndex === 0 ? "text-white" : "text-[#0D2E4D]"
                       }`}
                     >
                       {carouselItems[currentIndex].description}

@@ -22,7 +22,7 @@ const formSchema = z.object({
   endTo: z.string().min(2, { message: "Please enter a valid end location" }),
   date: z.string().min(1, { message: "Please select a date" }),
   time: z.string().min(1, { message: "Please select a time" }),
-  company: z.string().min(2, { message: "Please enter a valid company name" }),
+  company: z.string().min(2, { message: "Please enter a valid number of passengers" }),
 });
 
 type FormValues = z.infer<typeof formSchema>;
@@ -126,7 +126,7 @@ export function ContactSection() {
               </div>
             </div>
             
-            <div className="bg-gray-50 rounded-xl p-8">
+            {/* <div className="bg-gray-50 rounded-xl p-8">
               <h3 className="text-2xl font-semibold mb-6">Business Hours</h3>
               
               <div className="flex flex-col sm:flex-row sm:justify-between mb-3 gap-1 sm:gap-0 text-base">
@@ -143,7 +143,7 @@ export function ContactSection() {
                 <span className="font-medium">Sunday:</span>
                 <span className="sm:text-right">10:00 AM - 4:00 PM</span>
               </div>
-            </div>
+            </div> */}
           </motion.div>
           
           {/* Form - Now on the right */}
@@ -335,7 +335,7 @@ export function ContactSection() {
                     name="company"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel className="text-gray-700 mb-1">Company Name</FormLabel>
+                        <FormLabel className="text-gray-700 mb-1">No of Passengers</FormLabel>
                         <FormControl>
                           <Input 
                             {...field}

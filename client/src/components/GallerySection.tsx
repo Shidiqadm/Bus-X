@@ -47,31 +47,31 @@ const galleryItems: GalleryItem[] = [
     alt: "Cultural Heritage",
     type: "image"
   },
-  {
-    src: beachResort,
-    alt: "Beach Resort",
-    type: "image"
-  },
-  {
-    src: mountainView,
-    alt: "Mountain View",
-    type: "image"
-  },
-  {
-    src: adventureTravel,
-    alt: "Adventure Travel",
-    type: "image"
-  },
-  {
-    src: roadTrip,
-    alt: "Road Trip",
-    type: "image"
-  },
-  {
-    src: architecture,
-    alt: "Architecture",
-    type: "image"
-  },
+  // {
+  //   src: beachResort,
+  //   alt: "Beach Resort",
+  //   type: "image"
+  // },
+  // {
+  //   src: mountainView,
+  //   alt: "Mountain View",
+  //   type: "image"
+  // },
+  // {
+  //   src: adventureTravel,
+  //   alt: "Adventure Travel",
+  //   type: "image"
+  // },
+  // {
+  //   src: roadTrip,
+  //   alt: "Road Trip",
+  //   type: "image"
+  // },
+  // {
+  //   src: architecture,
+  //   alt: "Architecture",
+  //   type: "image"
+  // },
   {
     src: landmark,
     alt: "Landmark",
@@ -87,26 +87,26 @@ const galleryItems: GalleryItem[] = [
     alt: "Historical Site",
     type: "image"
   },
-  {
-    src: luxuryTransport,
-    alt: "Luxury Transport",
-    type: "image"
-  },
-  {
-    src: busTravel,
-    alt: "Bus Travel",
-    type: "image"
-  },
+  // {
+  //   src: luxuryTransport,
+  //   alt: "Luxury Transport",
+  //   type: "image"
+  // },
+  // {
+  //   src: busTravel,
+  //   alt: "Bus Travel",
+  //   type: "image"
+  // },
   {
     src: wildlifeSafari,
     alt: "Wildlife Safari",
     type: "image"
   },
-  {
-    src: scenicView1,
-    alt: "Scenic View",
-    type: "image"
-  },
+  // {
+  //   src: scenicView1,
+  //   alt: "Scenic View",
+  //   type: "image"
+  // },
   {
     src: desertLandscape,
     alt: "Desert Landscape",
