@@ -15,14 +15,14 @@ const formSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters" }),
   email: z.string().email({ message: "Please enter a valid email address" }),
   phone: z.string().min(10, { message: "Please enter a valid phone number" }),
-  service: z.string().min(1, { message: "Please select a service" }),
+  service: z.string().optional(),
   message: z.string().min(10, { message: "Message must be at least 10 characters" }),
   tripType: z.enum(['single', 'round']),
   startFrom: z.string().min(2, { message: "Please enter a valid start location" }),
   endTo: z.string().min(2, { message: "Please enter a valid end location" }),
   date: z.string().min(1, { message: "Please select a date" }),
   time: z.string().min(1, { message: "Please select a time" }),
-  company: z.string().min(2, { message: "Please enter a valid number of passengers" }),
+  company: z.string().min(1, { message: "Please enter a valid number of passengers" }),
 });
 
 type FormValues = z.infer<typeof formSchema>;

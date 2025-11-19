@@ -1,11 +1,5 @@
 import { QueryClient, QueryFunction } from "@tanstack/react-query";
 
-// Mock success response for form submissions
-const mockSuccessResponse = new Response(JSON.stringify({ success: true }), {
-  status: 200,
-  headers: { 'Content-Type': 'application/json' }
-});
-
 async function throwIfResNotOk(res: Response) {
   if (!res.ok) {
     const text = (await res.text()) || res.statusText;
@@ -18,24 +12,38 @@ export async function apiRequest(
   url: string,
   data?: unknown | undefined,
 ): Promise<Response> {
-  console.log(`Client-only mode: ${method} request to ${url}`, data);
+  // Map API endpoints to Netlify functions
+  const endpointMap: Record<string, string> = {
+    '/api/contact': '/.netlify/functions/send-email',
+  };
+
+  const netlifyUrl = endpointMap[url] || url;
   
-  // In client-only mode, we'll simulate a successful response
-  // This way forms will appear to work without a backend
-  return mockSuccessResponse;
+  console.log(`${method} request to ${netlifyUrl}`, data);
+  
+  const res = await fetch(netlifyUrl, {
+    method,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: data ? JSON.stringify(data) : undefined,
+  });
+
+  await throwIfResNotOk(res);
+  return res;
 }
 
 type UnauthorizedBehavior = "returnNull" | "throw";
-export const getQueryFn: <T>(options: {
+export function getQueryFn<T>(options: {
   on401: UnauthorizedBehavior;
-}) => QueryFunction<T> =
-  ({ on401: unauthorizedBehavior }) =>
-  async ({ queryKey }) => {
+}): QueryFunction<T> {
+  return async ({ queryKey }) => {
     console.log(`Client-only mode: GET request to ${queryKey[0]}`);
     
     // For GET requests, return empty mock data
     return {} as T;
   };
+}
 
 export const queryClient = new QueryClient({
   defaultOptions: {
