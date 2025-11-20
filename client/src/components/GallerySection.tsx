@@ -77,16 +77,16 @@ const galleryItems: GalleryItem[] = [
     alt: "Landmark",
     type: "image"
   },
-  {
-    src: natureLandscape,
-    alt: "Nature Landscape",
-    type: "image"
-  },
-  {
-    src: historicalSite,
-    alt: "Historical Site",
-    type: "image"
-  },
+  // {
+  //   src: natureLandscape,
+  //   alt: "Nature Landscape",
+  //   type: "image"
+  // },
+  // {
+  //   src: historicalSite,
+  //   alt: "Historical Site",
+  //   type: "image"
+  // },
   // {
   //   src: luxuryTransport,
   //   alt: "Luxury Transport",
@@ -132,18 +132,18 @@ const galleryItems: GalleryItem[] = [
     alt: "Snow Party 1",
     type: "image"
   },
-  {
-    src: travelExperienceVideo,
-    thumbnail: travelExperienceThumbnail,
-    alt: "Travel Experience",
-    type: "video"
-  },
-  {
-    src: tourHighlightsVideo,
-    thumbnail: tourHighlightsThumbnail,
-    alt: "Tour Highlights",
-    type: "video"
-  }
+  // {
+  //   src: travelExperienceVideo,
+  //   thumbnail: travelExperienceThumbnail,
+  //   alt: "Travel Experience",
+  //   type: "video"
+  // },
+  // {
+  //   src: tourHighlightsVideo,
+  //   thumbnail: tourHighlightsThumbnail,
+  //   alt: "Tour Highlights",
+  //   type: "video"
+  // }
 ];
 
 const container = {
